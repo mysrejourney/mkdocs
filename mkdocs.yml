@@ -1,6 +1,6 @@
 site_name: My SRE Learning Journey
 nav:
-  - Getting Started: "docs/index.md"
+  - Getting Started: "index.md"
   - Bash:
       - if-condition: "bash/condition-statement.md"
       - primary-expression: "bash/primary-expression.md"
