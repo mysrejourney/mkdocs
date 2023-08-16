@@ -1,0 +1,34 @@
+site_name: My SRE Learning Journey
+nav:
+  - Getting Started: "index.md"
+  - Bash:
+      - if-condition: "bash/condition-statement.md"
+      - primary-expression: "bash/primary-expression.md"
+      - advanced-if-else: "bash/advanced-if-else.md"
+theme:
+  name: material
+  font:
+    text: Roboto Mono
+    code: Roboto Mono
+    typeface: 700
+  features:
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  hide:
+    - toc
+markdown_extensions:
+  - toc:
+      permalink: false
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+plugins:
+  - glightbox
