@@ -2,7 +2,7 @@ site_name: My SRE Learning Journey
 nav:
   - Getting Started: "docs/index.md"
   - Bash:
-      - if-condition: "docs/bash/condition-statement.md"
+      - if-condition: "bash/condition-statement.md"
       - primary-expression: "docs/bash/primary-expression.md"
       - advanced-if-else: "docs/bash/advanced-if-else.md"
 theme:
