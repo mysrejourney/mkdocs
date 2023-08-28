@@ -2,9 +2,13 @@ site_name: My SRE Learning Journey
 nav:
   - Getting Started: "index.md"
   - Bash:
-      - if-condition: "bash/condition-statement.md"
-      - primary-expression: "bash/primary-expression.md"
-      - advanced-if-else: "bash/advanced-if-else.md"
+      - Conditional Statment: "bash/condition-statement.md"
+      - Primary Expression: "bash/primary-expression.md"
+      - Advanced Conditional: "bash/advanced-if-else.md"
+      - Looping Concepts: "bash/looping-concepts.md"
+      - For Loop: "bash/for-loop.md"
+  - Tips and Tricks:
+      - Shell: "tips/shell-script.md"
 theme:
   name: material
   font:
