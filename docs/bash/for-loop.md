@@ -10,7 +10,7 @@ This loop allows for specification of a list of values. A list of commands is ex
 ```bash
 for <variable> in [ LIST ] 
 do 
-    COMMANDS/statements; 
+    COMMANDS/statements
 done
 ```
 whereas,
@@ -124,3 +124,90 @@ do
 done
 ```
 ![cstyle](../assets/cstyle.jpg)
+
+## Use of break command
+Break command is used to exit of the immediate loop.
+
+####Syntax
+```bash
+for <variable> in [ LIST ]
+do
+  statements/COMMANDS
+  if [[ condition ]]
+  then
+    break # In general, break can be used in loops to check if certain condition is met. If the condition is met, then exit of the loop
+  fi
+done
+```
+####Example
+Let us assume, if the file contains many names. We would like to search a particular name if it exists in the file. If found, we can stop the search.
+To do this,
+```bash
+#!/bin/bash
+# This script is to just print the given number if it is less than 4.
+for name in $(cat names.txt)
+do
+  echo "${name}"
+  if [[ "${name}" == "Kapil" ]]
+  then
+    echo "Name ${name} found"
+    break
+  fi
+done
+```
+![name2](../assets/name2.jpg)
+![break](../assets/break.jpg)
+
+Another example with nested for loop along with break command
+```bash
+#!/bin/bash
+## This script is to just print the given number and also names for each number
+
+for number in {1..5} # OUTER FOR LOOP
+do
+  echo ${number}
+  for name in Satheesh Jeganathan Adhira Praba # INNER FOR LOOP
+  do
+    echo ${number}. ${name}
+    if [[ "${name}" == "Jeganathan" ]]; then
+      echo ${name} is found and breaking my immediate loop
+      break # BREAK ONLY INNER FOR LOOP
+    fi
+  done
+  
+  if [[ ${number} -eq 3 ]]; then
+    break # BREAK ONLY OUTER FOR LOOP
+  fi
+done
+```
+![break1](../assets/break1.jpg)
+
+## Use of continue command
+Continue command is used to skip the current iteration and move to next iteration in the loop.
+
+####Syntax
+```bash
+for <variable> in [ LIST ]
+do
+  statements/COMMANDS
+  if [[ condition ]]
+  then
+    continue # In general, continue can be used in loops to check if certain condition is met. If the condition is met, then skip that iteration 
+  fi
+done
+```
+####Example
+```bash
+#!/bin/bash
+## This script is to just print the player who's name is not Saurav.
+for name in $(cat names.txt)
+do
+  if [[ "${name}" == "Saurav" ]]
+  then
+    continue # Skip the rest of the statements in for loop (immediate)
+  fi
+  echo "${name} is selected for the tournament"
+done
+```
+![namecontinue](../assets/name_continue.jpg)
+![continue](../assets/continue.jpg)

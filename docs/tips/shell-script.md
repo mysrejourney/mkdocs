@@ -52,3 +52,13 @@ If you need the filename excluding the extension, then the command is
 basename /User/satheeshpandian.j/Documents/Sats/Learning/Shell/Practice/if_exit.sh .sh
 ```
 ![basename_sh](../assets/basename_sh.jpg)
+
+### Print the file names in current directory
+```bash
+#!/bin/bash
+# print all the files in the current directory
+for f in * 
+do 
+  echo "$f"
+done
+```
