@@ -9,6 +9,10 @@ nav:
       - For Loop: "bash/for-loop.md"
       - While Loop: "bash/while-loop.md"
       - Until Loop: "bash/until-loop.md"
+      - IFS: "bash/ifs.md"
+      - Special Parameters: "bash/special-parameters.md"
+  - HTML:
+      - Important Tags: "html/tags.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 theme:
