@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Caveat&family=Libre+Baskerville&family=PT+Sans+Narrow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 @font-face {
-    font-family: 'Alegreya', serif;
-    font-family: 'Caveat', cursive;
-    font-family: 'Libre Baskerville', serif;
-    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-family: 'Cabin', sans-serif;
 }
 :root {
-  --md-text-font: 'Alegreya', serif;
-  --md-code-font: 'Libre Baskerville', serif;
+  --md-text-font: 'Atkinson Hyperlegible', sans-serif;
+  --md-code-font: 'Cabin', sans-serif;
 }
