@@ -1,5 +1,5 @@
 #SITE DETAILS
-site_name: My SRE Learning Journey
+site_name: My SRE Journey
 site_author: Satheesh Pandian
 
 #REPO DETAILS
@@ -9,10 +9,6 @@ repo_name: mysrejourney/mkdocs
 #CONFIGURATION
 theme:
   name: material
-  font:
-    text: Roboto Mono
-    code: Roboto Mono
-    typeface: 700
   features:
     - navigation.tabs
     - navigation.sections
@@ -54,6 +50,10 @@ nav:
       - Introduction: "html/introduction.md"
       - Template: "html/web-pages.md"
       - Important Tags: "html/tags.md"
+  - CSS:
+      - Introduction: "css/intro.md"
+      - Selectors: "css/selector.md"
+      - Colors: "css/color.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 
