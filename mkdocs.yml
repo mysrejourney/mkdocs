@@ -1,4 +1,43 @@
+#SITE DETAILS
 site_name: My SRE Learning Journey
+site_author: Satheesh Pandian
+
+#REPO DETAILS
+repo_url: https://github.com/mysrejourney/mkdocs
+repo_name: mysrejourney/mkdocs
+
+#CONFIGURATION
+theme:
+  name: material
+  font:
+    text: Roboto Mono
+    code: Roboto Mono
+    typeface: 700
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  hide:
+    - toc
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: lime
+
+#PAGE NAVIGATION
 nav:
   - Getting Started: "index.md"
   - Bash:
@@ -15,18 +54,15 @@ nav:
       - Important Tags: "html/tags.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
-theme:
-  name: material
-  font:
-    text: Roboto Mono
-    code: Roboto Mono
-    typeface: 700
-  features:
-    - search.suggest
-    - content.code.copy
-    - content.tabs.link
-  hide:
-    - toc
+
+#SOCIAL MEDIA ICONS
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/mysrejourney/
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/satheesh-pandian-950671224/
+
 markdown_extensions:
   - toc:
       permalink: false
@@ -42,3 +78,7 @@ markdown_extensions:
 
 plugins:
   - glightbox
+  - search
+
+copyright: |
+  &copy; 2023 <a href="https://github.com/mysrejourney/"  target="_blank" rel="noopener">Satheesh Pandian</a>
