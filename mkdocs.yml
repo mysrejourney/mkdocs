@@ -15,6 +15,10 @@ theme:
   language: en
 plugins:
   - social
+      enabled: !ENV [CI, false]
+      concurrency: 1
+      cards: !ENV [CI, false]
+
 extra:
   social:
     - icon: fontawesome/brands/github-alt
