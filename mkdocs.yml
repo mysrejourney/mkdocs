@@ -28,13 +28,13 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-      primary: teal
+      primary: black
       accent: purple
     - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-      primary: teal
+      primary: pink
       accent: lime
 
 #PAGE NAVIGATION
@@ -81,6 +81,9 @@ markdown_extensions:
 plugins:
   - glightbox
   - search
+
+extra_css:
+  - stylesheets/extra.css
 
 copyright: |
   &copy; 2023 <a href="https://github.com/mysrejourney/"  target="_blank" rel="noopener">Satheesh Pandian</a>
