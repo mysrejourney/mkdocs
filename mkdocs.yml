@@ -51,6 +51,8 @@ nav:
       - IFS: "bash/ifs.md"
       - Special Parameters: "bash/special-parameters.md"
   - HTML:
+      - Introduction: "html/introduction.md"
+      - Template: "html/web-pages.md"
       - Important Tags: "html/tags.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
