@@ -1,50 +1,4 @@
 site_name: My SRE Learning Journey
-site_url: https://mysrejourney.github.io/mkdocs
-theme:
-  name: material
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - toc.integrate
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.code.copy
-    - content.code.annotation
-    - content.tabs.link
-  language: en
-plugins:
-  - social
-      enabled: !ENV [CI, false]
-      concurrency: 1
-      cards: !ENV [CI, false]
-
-extra:
-  social:
-    - icon: fontawesome/brands/github-alt
-      link: https://github.com/mysrejourney
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/satheesh-pandian-950671224/
-markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-#      line_spans: __span
-#      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - admonition
-  - pymdownx.superfences
-  - footnotes
-  - pymdownx.details
-  - pymdownx.mark
-  - attr_list
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-copyright: |
-  &copy; 2023 <a href="https://github.com/mysrejourney"  target="_blank" rel="noopener">Satheesh Pandian</a>
 nav:
   - Getting Started: "index.md"
   - Bash:
@@ -58,8 +12,33 @@ nav:
       - IFS: "bash/ifs.md"
       - Special Parameters: "bash/special-parameters.md"
   - HTML:
-      - HTML Intro: "html/introduction.md"
-      - Web Pages: "html/web-pages.md"
       - Important Tags: "html/tags.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
+theme:
+  name: material
+  font:
+    text: Roboto Mono
+    code: Roboto Mono
+    typeface: 700
+  features:
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  hide:
+    - toc
+markdown_extensions:
+  - toc:
+      permalink: false
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+plugins:
+  - glightbox
