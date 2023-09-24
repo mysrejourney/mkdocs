@@ -28,6 +28,7 @@ Example:
 <h4>Satheesh</h4>
 ```
 Whereas, 
+
 - `<h4>` = Starting tag 
 - `</h4>` = Closing tag
 - `Satheesh` = Content

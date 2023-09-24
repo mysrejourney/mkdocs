@@ -22,6 +22,7 @@ do
 done 
 ```
 ![ifs_quote](../assets/ifs_quote.jpg)
+
 - We can also overwrite the default value by specifying custom IFS i.e
   `IFS=","`. Comma is a separator in this case. In the below example, ":" is used as a separator
 ```bash
@@ -47,7 +48,7 @@ done
 ```
 ![ifs_mixed](../assets/ifs_mixed.jpg)
 
-####So far, we have assigned a value into the variable and used the variable in for loop. Instead, we can use the value directly in for loop without assigning them into variable. Let us see some examples.
+So far, we have assigned a value into the variable and used the variable in for loop. Instead, we can use the value directly in for loop without assigning them into variable. Let us see some examples.
 ```bash
 #!/usr/bin/env bash
 IFS=":"

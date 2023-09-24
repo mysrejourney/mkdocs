@@ -5,6 +5,6 @@
     font-family: 'Cabin', sans-serif;
 }
 :root {
-  --md-text-font: 'Atkinson Hyperlegible', sans-serif;
-  --md-code-font: 'Cabin', sans-serif;
+  --md-text-font: "Monaco", monospace;
+  --md-code-font: "Lucida Console", Monospace;
 }

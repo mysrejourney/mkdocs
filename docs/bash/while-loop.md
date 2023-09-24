@@ -1,9 +1,11 @@
 #The while loop
 In general, while loop can be used in the below scenarios.
+
 * Executes a command or set of commands many times, but you are not sure how many times
 * Executes a command or set of commands until specific condition occurs 
 * Create an infinite loop
 * Menu driven programs 
+
 ##How does it work?
 The while allows for repetitive execution of a list of commands, as long as the condition defined in the while loop executes successfully (exit status of zero).
 

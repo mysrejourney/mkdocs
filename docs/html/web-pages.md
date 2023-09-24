@@ -23,6 +23,7 @@ If we wanted to navigate other html document, those html documents are linked in
     <meta charset="UTF-8">
 </head>
 ```
+
 - Under `<head>`, `<meta>` tag for the character set should be always present.
 - This ensures all the characters used in the website display properly.
 
@@ -32,6 +33,7 @@ If we wanted to navigate other html document, those html documents are linked in
     My website
 </title>
 ```
+
 - Under `<head>`, `<title>` tag will tell you the title of the document, and it will be displayed in the browser, NOT in web page.
 
 
@@ -41,6 +43,7 @@ If we wanted to navigate other html document, those html documents are linked in
     CONTENT
 </body>
 ```
+
 - Creating content and structure of the document goes in between `<body>` and `</body>` tag
 - All other tags should come under `<body>` tag
 - The content updated under this tag is visible to users.

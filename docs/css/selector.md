@@ -20,6 +20,7 @@ p {
 }
 ```
 In the above example, h3 and p are called as selectors as they are updated in CSS file and changing the property based on the value mentioned in CSS file. 
+
 ![selector_normal](../assets/selector_normal.jpg)
 
 ###Class selector(.)
@@ -122,6 +123,7 @@ p[draggable] {
 }
 ```
 Here, draggable is an attribute. <mark>You can select any attribute</mark>
+
 ![draggable](../assets/draggable.jpg)
 
 ###All selector (*)

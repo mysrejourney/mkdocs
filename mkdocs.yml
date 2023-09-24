@@ -46,6 +46,7 @@ nav:
       - Until Loop: "bash/until-loop.md"
       - IFS: "bash/ifs.md"
       - Special Parameters: "bash/special-parameters.md"
+      - Stream Editor (sed): "bash/sed.md"
   - HTML:
       - Introduction: "html/introduction.md"
       - Template: "html/web-pages.md"
@@ -54,6 +55,10 @@ nav:
       - Introduction: "css/intro.md"
       - Selectors: "css/selector.md"
       - Colors: "css/color.md"
+      - Order of Style: "css/cascade-priority.md"
+  - Terraform:
+      - Infrastructure As Code: "terraform/iac.md"
+      - Introduction: "terraform/intro.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 

@@ -23,6 +23,7 @@ There are few commonly used color properties in CSS.
 </html>
 ```
 ![text_color](../assets/text_color.jpg)
+
 3. `border` This is use to set the color for the border
 ```html
 <html>

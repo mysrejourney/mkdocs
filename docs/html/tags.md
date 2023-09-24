@@ -26,6 +26,7 @@ Should contain the content of the document along with their structure
 <h6>Satheesh</h6>
 ```
 ![header](../assets/header.jpg)
+
 <mark>Remember,</mark>
 
 - header tags are ONLY from h1 to h6.
