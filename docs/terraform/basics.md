@@ -3,7 +3,7 @@
 When we run the `terraform init` command in a directory contains configuration file, 
 terraform downloads the plugin and install them for the providers mentioned (AWS/Azure/GCP/Ali) in the configuration file.
 
-Terraform plugins are available in Hashicorp registry (<a href="https://registry.terraform.io/">https://registry.terraform.io/) for all the providers.
+Terraform plugins are available in Hashicorp registry <a href="https://registry.terraform.io/"> https://registry.terraform.io </a> for all the providers.
 There are three different providers.
 - Official Providers : Owned and maintained <mark>by Hashicorp</mark>
 - Partner Providers : Owned and maintained <mark>by third party company</mark> that has partner provider access with Hashicorp
@@ -370,4 +370,51 @@ resource "random_pet" "my-pet-name" {
 } 
 ```
 
+**Output Variable**
+
+Output variables can be used to store the value of an expression. This can be passed into another configuration file as an input.
+
+**Syntax**
+
+```
+output <OUTPUT_VARIABLE> {
+   value = <output value from the configuration file>
+}
+```
+
+
+**Example**
+
+``` main.tf
+ resource "local_file" "my-file" {
+       filename = "./test.txt"
+       content = "This is ${random_pet.my-pet-name.id}"
+}
+  
+resource "random_pet" "my-pet-name" {
+       prefix = "Dr"
+       separator = "."
+       length = 2
+} 
+
+output "pet-name" {
+   value = random_pet.my-pet-name.id
+   description = "This is output value of random_pet and passed as an input to local_file"
+}
+```
+
+![terraform_output_result.png](../assets/terraform_output_result.png)
+
+![terraform_output_result_file.png](../assets/terraform_output_result_file.png)
+
+`terraform output` command will print all the output variable in the configuration file.
+
+Assume that in the configuration file, there are many output variables. You would like to see only one output variable among 5. 
+In that case, run the below command
+
+`terraform output <variable_name>`
+
+Example: `terraform output pet-name`
+
+![terraform_output_variable.png](../assets/terraform_output_variable.png)
 

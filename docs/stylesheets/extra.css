@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Mukta&display=swap');
 @font-face {
-    font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-family: 'Cabin', sans-serif;
+    font-family: 'Mukta', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 :root {
   --md-text-font: "Monaco", monospace;
