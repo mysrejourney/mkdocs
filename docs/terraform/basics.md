@@ -5,10 +5,11 @@ terraform downloads the plugin and install them for the providers mentioned (AWS
 
 Terraform plugins are available in Hashicorp registry <a href="https://registry.terraform.io/"> https://registry.terraform.io </a> for all the providers.
 There are three different providers.
-- Official Providers : Owned and maintained <mark>by Hashicorp</mark>
-- Partner Providers : Owned and maintained <mark>by third party company</mark> that has partner provider access with Hashicorp
-- Community Providers : Published and maintained <mark>by individual contributors </mark>of Hashicorp community
-
+<ol>
+<li> Official Providers : Owned and maintained <mark>by Hashicorp</mark></li>
+<li>Partner Providers : Owned and maintained <mark>by third party company</mark> that has partner provider access with Hashicorp</li>
+<li>Community Providers : Published and maintained <mark>by individual contributors </mark>of Hashicorp community</li>
+</ol>
 All plugins are downloaded into `<working directory>/.terraform` directory. When we download the plugins (during <mark>`terraform init`</mark> command), this will tell you
 <mark>where the plugins are from.</mark>
 
@@ -16,11 +17,11 @@ All plugins are downloaded into `<working directory>/.terraform` directory. When
 
 Whereas,
 
-Hostname is optional. If it is not mentioned, then it is default value (registry.terraform.io)
+_Hostname_ is optional. If it is not mentioned, then it is <mark>default value (registry.terraform.io)</mark>
 
-Organisation namespace is Hashicorp/Partner Provider/Community Provider
+_Organisation namespace_ is Hashicorp/Partner Provider/Community Provider
 
-Provider name is AWS/Azure/GCP/Local etc.,
+_Provider name_ is AWS/Azure/GCP/Local etc.,
 
 **Configuration Directory**
 
@@ -51,8 +52,8 @@ You can create a configuration file which contains multiple providers like below
 **Input Variables**
 
 For re-usability purpose, we can use variables. To do so, we can create variable.tf file and update all variables in it.
-In general, whatever arguments we are passing in block, we can use variable for those arguments.
-Remember, both variable configuration file and your main configuration file should be in same directory.
+<mark>In general, whatever arguments we are passing in block, we can use variable for those arguments.
+Remember, both variable configuration file and your main configuration file should be in same directory.</mark>
 
 
 ***Syntax***
