@@ -59,9 +59,12 @@ nav:
   - Terraform:
       - Infrastructure As Code: "terraform/iac.md"
       - Introduction: "terraform/intro.md"
-      - HCL: "terraform/hcl.md"
+      - HCL: "terraform/commands.md"
       - Basics: "terraform/basics.md"
       - Terraform State:  "terraform/state.md"
+      - Basic Commands: "terraform/commands.md"
+      - Work with Terraform: "terraform/work_terraform.md"
+      - Terraform in AWS: "terraform/terraform_in_aws.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 
