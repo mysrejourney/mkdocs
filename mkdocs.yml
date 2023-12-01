@@ -65,6 +65,8 @@ nav:
       - Basic Commands: "terraform/commands.md"
       - Work with Terraform: "terraform/work_terraform.md"
       - Terraform in AWS: "terraform/terraform_in_aws.md"
+  - K8s:
+      - Architecture: "k8s/k8-arch.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 
