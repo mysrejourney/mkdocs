@@ -67,6 +67,8 @@ nav:
       - Terraform in AWS: "terraform/terraform_in_aws.md"
   - K8s:
       - Architecture: "k8s/k8-arch.md"
+      - ContainerD: "k8s/containerd.md"
+      - Basics: "k8s/basics.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 
