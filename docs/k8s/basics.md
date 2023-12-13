@@ -64,14 +64,15 @@ Spec:
 
 **apiVersion & kind:**
 
-| Kind               | apiVersion |
-|--------------------|------------|
-| Pod                | v1         |
-| Service            | v1         |
-| Replication Controller | v1     |
-| ReplicaSet         | apps/v1    |
-| ReplicaSet         | apps/v1    |
-| Deployment         | apps/v1    | 
+| Kind                   | apiVersion |
+|------------------------|------------|
+| Pod                    | v1         |
+| Service                | v1         |
+| Replication Controller | v1         |
+| ReplicaSet             | apps/v1    |
+| ReplicaSet             | apps/v1    |
+| Deployment             | apps/v1    | 
+| Namespace              | v1         |
 
 **metadata**
 This is where we need to define the pod properties such as name, labels etc.,
@@ -233,8 +234,9 @@ spec:  -------------------------> RC properties need to be updated under this
     replicas: 4 ----------------> Number of pods to be created
     selectors: -----------------> To group the pods and monitor
         matchLabels: -----------> To select the pod using label
-            name: my-pod-label
+            name: my-pod-label ---> same label mentioned as pod label
 ```
+matchLabels should be same as pod label mentioned under template section.
 
 ![k8s_rs_1.png](../assets/k8s_rs_1.png)
 
@@ -269,8 +271,150 @@ kubectl scale --replicas=6 replicaset <replicaset name>
 kubectl edit replicaset <replicaset name> => manually edit and save
 ```
 
+####Deployments
+
+Assume that there are 10 pods running  in k8s cluster with v1 version of image. You want to update the v2 version of image now.
+So, you need to down 1 pod at a time and replace it with new pod (v2 version). This process applicable until all the existing pods
+are replaced. This is called <mark> rolling updates</mark>.
+
+Using deployment, we can do rolling updates, rollback, pause and resume after the changes in k8s cluster.
 
 
+```html
+apiVersion: apps/v1 ------------> Based on k8s object, you can update this
+kind: Deployment ---------------> k8s object
+metadata: ----------------------> RC properties need to be updated under this
+    name: my-pod ---------------> RC name (mandatory)
+    labels: --------------------> used to group RCs (optional)
+        apps: sats
+spec:  -------------------------> RC properties need to be updated under this
+    template: ------------------> Under this, pod details need to be updated
+        metadata:
+            name: my-pod
+            labels:
+                name: my-pod-label
+        spec: -------------------------> Pods specification which can be created 
+            containers: 
+            -   image: nginx -----------> container image
+                name: nginx-container --> container name
+    replicas: 4 ----------------> Number of pods to be created
+    selectors: -----------------> To group the pods and monitor
+        matchLabels: -----------> To select the pod using label
+            name: my-pod-label ---> same label mentioned as pod label
+```
+
+To create a deployment and view the list of deployment created
+```html
+kubectl create -f <deployment definition YAML file>
+kubectl create deployment <deployment name> --image=<image name> --replicas=<number of pods> --dry-run=client -o yaml > <dployement YAML file>
+kubectl get deployment
+```
+
+Deployment creates replicaset and pods by default along with deployment.
+
+![k8s_de_1.png](../assets/k8s_de_1.png)
 
 
+![k8s_de_2.png](../assets/k8s_de_2.png)
 
+
+####Namespace
+
+We are creating k8s objects such as pods, deployments, RC, RS and services inside the namespace. <mark>There are three namespaces
+created automatically by k8s. </mark>
+
+`default` namespace is created automatically by k8s when the cluster is set up.
+
+K8s created a set of pods and services <mark>for internal use such as networking, DNS resolution etc., are put into another namespace
+known as `kube-system`. This namespace is not accessible to the user.</mark>
+
+`kube-public` namespace is <mark>allowed to access by users.</mark>
+
+You can create your own namespace in the same cluster and create pods, services for each namespace.
+So, we can avoid using/modifying pods, services in another namespace. Each namespace have its own policy that define the role
+who can do what. Also, we can assign quota for each namespace. This way we can ensure that each namespace uses only allowed limit 
+and will not impact other namespace.
+
+<mark>Resources in the namespace refers each other using their name. For example, assume that there are two different services
+are in the default namespace named as db-service and web-service. If web-service pod wants to talk/call to db-service pod, then it simply
+calls db-service.</mark>
+
+<mark>Resources in one namespace wants to make a call to the resources in another namespace, then it should follow the below pattern</mark>
+
+`<service name>.<namespace>.<subdomain>.<domain>` --> domain is always cluster.local
+
+Remember, when the service is created, DNS is automatically created in this format.
+
+<mark>For example, assume that there are two different namespaces (dev, prod) and db-service in the dev namespace 
+and web-service in the prod namespace. If web-service pod wants to talk/call to db-service pod, then it needs to follow the patter</mark>
+
+`db-service.dev.svc.cluster.local`
+
+By default, kubectl command retrieves the data for default namespace. 
+<mark>If you want to view the details for another namespace</mark>
+
+```
+kubectl get pods -n
+or
+kubectl get pods --namespace=<namespace name>
+```
+
+To create pod in another namespace
+
+```
+kubectl create -f pod-definition.yaml --namespace=<namepace name>
+or
+kubectl create -f pod-definition.yaml -n=<namespace name>
+```
+
+If you want to create resources to any other namespace other than default namespace , you need to update below details in the 
+definition file.
+
+![k8s_ns_1.png](../assets/k8s_ns_1.png)
+
+In the above case, we don't need to pass --namespace in the command
+```
+kubectl create -f pod-definition.yaml
+```
+
+![k8s_ns_2.png](../assets/k8s_ns_2.png)
+
+
+To create namespace, there are two ways.
+
+```html
+kubectl create namespace <namespace name>
+
+or
+
+kubectl create -f <namespace definition YAML file>
+```
+
+![k8s_ns_3.png](../assets/k8s_ns_3.png)
+
+
+To view the current namespace
+
+```html
+kubectl config get-contexts
+```
+![k8s_ns_5.png](../assets/k8s_ns_5.png)
+
+To view all namespaces
+
+![k8s_ns_4.png](../assets/k8s_ns_4.png)
+
+To change the namespace permanently
+
+```html
+kubectl config set-context $(kubectl config current-context) --namespace=<namespace name>
+```
+![k8s_ns_6.png](../assets/k8s_ns_6.png)
+
+To create a resource quota for namespace, we need to create a resource quota definition file.
+
+![k8s_ns_7.png](../assets/k8s_ns_7.png)
+
+![k8s_ns_8.png](../assets/k8s_ns_8.png)
+
+![k8s_ns_9.png](../assets/k8s_ns_9.png)

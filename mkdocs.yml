@@ -35,7 +35,7 @@ theme:
 
 #PAGE NAVIGATION
 nav:
-  - Getting Started: "index.md"
+  - Home: "index.md"
   - Bash:
       - Conditional Statment: "bash/condition-statement.md"
       - Primary Expression: "bash/primary-expression.md"
