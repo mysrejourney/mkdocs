@@ -109,7 +109,6 @@ To replace all the occurrences of ‘pandian’ to ‘satheesh’ in third line 
 
 **Output**
 ![sed_all_occurence_line_global.png](../assets/sed_all_occurence_line_global.png)
-
 All the occurrence of `pandian` is replaced by `satheesh` in the third line and NO OTHER CHANGE in the file.
 
 

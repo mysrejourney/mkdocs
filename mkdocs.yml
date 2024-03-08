@@ -69,6 +69,11 @@ nav:
       - Architecture: "k8s/k8-arch.md"
       - ContainerD: "k8s/containerd.md"
       - Basics: "k8s/basics.md"
+      - Configuration: "k8s/config.md"
+      - Observability: "k8s/observability.md"
+      - Imperative Commands: "k8s/imperative-commands.md"
+      - Deployment Strategy: "k8s/deploy-strategy.md"
+      - Services: "k8s/services.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 
