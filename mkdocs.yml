@@ -74,6 +74,9 @@ nav:
       - Imperative Commands: "k8s/imperative-commands.md"
       - Deployment Strategy: "k8s/deploy-strategy.md"
       - Services: "k8s/services.md"
+
+  - Ansible:
+      - Introduction: "ansible/intro.md"
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 
