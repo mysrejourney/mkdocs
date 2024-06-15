@@ -77,6 +77,10 @@ nav:
 
   - Ansible:
       - Introduction: "ansible/intro.md"
+
+  - Kafka:
+      - Introduction: "kafka/intro.md"
+
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 
