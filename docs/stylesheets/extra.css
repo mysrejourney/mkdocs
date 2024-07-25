@@ -8,3 +8,6 @@
   --md-text-font: "Monaco", monospace;
   --md-code-font: "Lucida Console", Monospace;
 }
+::selection {
+  background: 'cyan';
+}
