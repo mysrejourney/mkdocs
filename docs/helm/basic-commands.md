@@ -41,10 +41,15 @@ Now, install the chart using `helm install <release name> <repo name>/<chart nam
 
 ![helm_17.png](../assets/helm_17.png)
 
-In the above snapshot, my-prometheus is the release name, prometheus-community is the repo name and prometheus is the 
+In the above snapshot, my-prometheus is the release name, prometheus-community is the repo name, and prometheus is the 
 chart name. After installing the chart, validate the resources created in the k8s cluster.
 
 ![helm_18.png](../assets/helm_18.png)
+
+To install a specific version, run the below command
+`helm install <release name> <repo name>/<chart name> --version <version number>`
+
+![helm_29.png](../assets/helm_29.png)
 
 ### 4. helm list
 This is the command that helps you list all the releases in your k8s cluster.
@@ -96,6 +101,7 @@ helm install --set replicaCount=3 --set maintainer="satheeshpandianj@gmail.com" 
 ```
 
 **Second approach**
+
 Keep all the values to be overridden in a separate YAML file and pass that file during installation.
 
 ```html
@@ -113,6 +119,7 @@ helm install --values ~/custom-file.yaml prometheus-community/prometheus
 
 ```
 **Third approach**
+
 Download the chart directory locally and update `values.yaml` file with updated values.
 To do so, use the below command
 
@@ -127,4 +134,18 @@ Then install the chart from locally. To do so, use the below command
 
 ![helm_27.png](../assets/helm_27.png)
 
+
+### 8. helm history
+
+This command helps to see all the revisions for a particular release.
+`helm history <release name>`
+
+![helm_28.png](../assets/helm_28.png)
+
+### 9. helm rollback
+
+This command helps to roll back to a previous version for a particular release.
+`helm rollback <release name>`
+
+![helm_28.png](../assets/helm_28.png)
 
