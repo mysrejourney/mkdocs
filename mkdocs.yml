@@ -77,6 +77,7 @@ nav:
 
   - Helm:
       - Introduction: "helm/intro.md"
+      - Basic Commands: "helm/basic-commands.md"
 
   - Ansible:
       - Introduction: "ansible/intro.md"
