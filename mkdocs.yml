@@ -78,6 +78,7 @@ nav:
   - Helm:
       - Introduction: "helm/intro.md"
       - Basic Commands: "helm/basic-commands.md"
+      - Creating Chart: "helm/create-chart.md"
 
   - Ansible:
       - Introduction: "ansible/intro.md"
@@ -94,7 +95,7 @@ extra:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/mysrejourney/
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/satheesh-pandian-950671224/
+      link: https://www.linkedin.com/in/satheesh-j-950671224/
 
 markdown_extensions:
   - toc:
