@@ -79,6 +79,8 @@ nav:
       - Introduction: "helm/intro.md"
       - Basic Commands: "helm/basic-commands.md"
       - Creating Chart: "helm/create-chart.md"
+      - Functions: "helm/functions.md"
+      - Conditions: "helm/conditions.md"
 
   - Ansible:
       - Introduction: "ansible/intro.md"
