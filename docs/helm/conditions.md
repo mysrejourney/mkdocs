@@ -279,3 +279,97 @@ spec:
 When you run the template command, you will be able to see the below 
 
 ![helm_53.png](../assets/helm_53.png)
+
+### Named Templates
+
+Let us assume that there are labels which are repeated in multiple places and multiple manifest files.
+So, updating them in all the places and all the manifest files are complex in nature. 
+Instead, we update the labels in `_helpers.tpl` file and use them in the manifest files wherever required.
+
+`NOTE: File name starts with '_' will be a template file and helm will not consider them as a normal kubernetes object files.
+Hence, it will not be considered while creating k8s objects.`
+
+`_helpers.tpl`
+
+![helm_54.png](../assets/helm_54.png)
+
+```html
+{{- define "labels" }}
+  app: nginx
+  environment: prod
+{{- end }}
+```
+
+Remember that indentation is important when you update the values in the `_helper.tpl` file because the same indentation
+will be applied in the manifest files when created.
+
+Let us implement the labels in the `service.yaml` file.
+
+`service.yaml`
+
+```html
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  labels:
+    {{- template "labels" }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      nodePort: 30007
+```
+
+![helm_55.png](../assets/helm_55.png)
+
+Now, let us run the helm template command.
+
+![helm_56.png](../assets/helm_56.png)
+
+As you see the above snapshot, 
+there are only two spaces indentations applied in the service.yaml as the `_helpers.tpl` file
+has only two space indentations of those label values. 
+Also, you cannot increase the indentation in the `_helpers.tpl` file as
+those labels may be included in different places where different indentations are needed in those places.
+
+To avoid this issue, we need to use `indent` function.
+However, functions cannot be pipelined in `template` statement.
+So, we must use `include` statement instead of `template` statement
+
+
+`service.yaml`
+
+```html
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  labels:
+    {{- include "labels" . | indent 2}}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      nodePort: 30007
+```
+
+`Remember that you need to change the indent value wherever you applied. For example, if the labels are applied with 4 spaces
+indentations, then in those places you need update indent 4`
+
+
+![helm_57.png](../assets/helm_57.png)
+
+Now, let us run the helm template command.
+
+![helm_58.png](../assets/helm_58.png)
+
+
+
+

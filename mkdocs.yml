@@ -81,6 +81,7 @@ nav:
       - Creating Chart: "helm/create-chart.md"
       - Functions: "helm/functions.md"
       - Conditions: "helm/conditions.md"
+      - Chart Hooks: "helm/chart-hooks.md"
 
   - Ansible:
       - Introduction: "ansible/intro.md"
