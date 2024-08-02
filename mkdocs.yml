@@ -74,6 +74,8 @@ nav:
       - Imperative Commands: "k8s/imperative-commands.md"
       - Deployment Strategy: "k8s/deploy-strategy.md"
       - Services: "k8s/services.md"
+      - Jobs: "k8s/jobs.md"
+      - Cron Jobs: "k8s/cron-job.md"
 
   - Helm:
       - Introduction: "helm/intro.md"
