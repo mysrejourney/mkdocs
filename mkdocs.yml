@@ -76,6 +76,7 @@ nav:
       - Services: "k8s/services.md"
       - Jobs: "k8s/jobs.md"
       - Cron Jobs: "k8s/cron-job.md"
+      - Multi Containers: "k8s/multi-containers.md"
 
   - Helm:
       - Introduction: "helm/intro.md"
