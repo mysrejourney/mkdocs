@@ -78,6 +78,7 @@ nav:
       - Cron Jobs: "k8s/cron-job.md"
       - Multi Containers: "k8s/multi-containers.md"
       - Persistent Volume: "k8s/persistent-volume.md"
+      - Network Policy: "k8s/network-policy.md"
 
   - Helm:
       - Introduction: "helm/intro.md"
