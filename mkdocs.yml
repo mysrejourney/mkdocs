@@ -79,6 +79,8 @@ nav:
       - Multi Containers: "k8s/multi-containers.md"
       - Persistent Volume: "k8s/persistent-volume.md"
       - Network Policy: "k8s/network-policy.md"
+      - Security Context: "k8s/security-context.md"
+      - Requests & Limits: "k8s/requests-limits.md"
 
   - Helm:
       - Introduction: "helm/intro.md"
