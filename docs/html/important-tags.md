@@ -1,9 +1,12 @@
-Below tags are very important in HTML
+# HTML Elements 
 
-##`html` 
-Represents the top level element of HTML document. Hence, tt is called as  root element
+Below tags are crucial in HTML
 
-##`head` 
+## HTML
+Represents the top level element of the HTML document.
+Hence, It is called as a root element.
+
+## HEAD
 Should contain the metadata about the document such as title, scripts, style sheet.
     
 | Tags    | Definition                                                                                                          |
@@ -13,10 +16,8 @@ Should contain the metadata about the document such as title, scripts, style she
 | `style` | Contains the style information of the document. Mostly CSS file details                                             |
 | `meta`  | Represent meta data such as base, link etc                                                                          |
 
-##`body` 
-Should contain the content of the document along with their structure
 
-###`Header tags (h1 to h6)`
+### Header tags (h1 to h6)
 ```html
 <h1>Satheesh</h1>
 <h2>Satheesh</h2>
@@ -27,43 +28,56 @@ Should contain the content of the document along with their structure
 ```
 ![header](../assets/header.jpg)
 
-<mark>Remember,</mark>
+```Remember
 
 - header tags are ONLY from h1 to h6.
-- Keep only ONE h1 in your document as a best practice. Use another header tags for sub headers.
+- Keep only ONE h1 in your document as a best practice. Use another header tag for sub headers.
 - DO NOT skip header level tags. 
-  - Example: Assume, you are using h1 and h2 already in your document. For next level title, you need to use h3. DO NOT goto h4 by skipping h3.
+  - Example: Assume, you are using h1 and h2 already in your document. For next level title, you need to use h3. DO NOT go to h4 by skipping h3.
+```
 
-###`Paragraph tags (p)`
+
+## BODY
+Should contain the content of the document along with their structure
+
+### Paragraph tags (p)
+
 ```html
 <p>Satheesh is a Sr.SRE</p>
 <p>He is working in a bank</p>
 ```
 ![paragraph](../assets/paragraph.jpg)
 
-###`Void Elements (hr and br)`
-Void elements don't have content and closing tags. Instead, they have just starting tags with forward slash.
-They are known as self-closing tag.
+### Void Elements (hr and br)
+<mark>Void elements don't have content and closing tags.
+Instead, they have just starting tags with forward slash.
+They are known as self-closing tag.</mark>
 
 `hr` = Horizontal Rule
 ```html
 <hr /> 
 ```
+
 ```html
 <p>Satheesh</p>
 <hr/>
 <p>Bangalore</p>
 ```
+
 ![hr](../assets/hr.jpg)
 
 `br` = Break  
+
 ```html
 <p>Satheesh
 <br/>
 Bangalore</p>
 ```
+
 ![br](../assets/br.jpg)
-###`Unordered List`
+
+### Unordered List 
+
 ```html
 <ul>
   <li>Satheesh</li>
@@ -71,9 +85,11 @@ Bangalore</p>
   <li>Jeganathan</li>
 </ul>
 ```
+
 ![ul](../assets/ul.jpg)
 
-###`Ordered List`
+### Ordered List 
+
 ```html
 <ol>
   <li>Satheesh</li>
@@ -81,8 +97,11 @@ Bangalore</p>
   <li>Jeganathan</li>
 </ol>
 ```
+
 ![ol](../assets/ol.jpg)
-###`Ordered List with different starting number`
+
+### Ordered List with different starting number
+
 ```html
 <ol start="4">
   <li>Satheesh</li>
@@ -90,8 +109,11 @@ Bangalore</p>
   <li>Jeganathan</li>
 </ol>
 ```
+
 ![ol_start](../assets/ol_start.jpg)
-###`Ordered List with different starting number and type`
+
+### Ordered List with different starting number and type 
+
 ```html
 <ol start="4" type="I">
   <li>Satheesh</li>
@@ -99,8 +121,11 @@ Bangalore</p>
   <li>Jeganathan</li>
 </ol>
 ```
+
 ![ol_start_type](../assets/ol_start_type.jpg)
-###`Nested Ordered List`
+
+### Nested Ordered List
+
 ```html
 <ol>
   <li>Satheesh</li>
@@ -113,8 +138,11 @@ Bangalore</p>
   <li>Jeganathan</li>
 </ol>
 ```
+
 ![nested_ol](../assets/nested_ol.jpg)
-###`Nested Unordered List`
+
+### Nested Unordered List 
+
 ```html
 <ul>
   <li>Satheesh</li>
@@ -131,18 +159,27 @@ Bangalore</p>
   <li>Jeganathan</li>
 </ul>
 ```
+
 ![nested_ul](../assets/nested_ul.jpg)
-###`HTML attribute element`
+
+### HTML attribute element 
+
 ```html
 <TAG attribute1="value" attribute2="value">Content</TAG>
 ```
-###`Anchor element`
+
+### Anchor element
+
 ```html
-Click <a href="https://mysrejourney.github.io/mkdocs/" draggable="true">here</a> to goto my website
+Click <a href="https://mysrejourney.github.io/mkdocs/" draggable="true">here</a> to go to my website
 ```
+
 ![anchor](../assets/anchor.jpg)
-###`Image element`
+
+### Image element
+
 ```html
 <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2Fdistance--332562753704694887%2F&psig=AOvVaw0CNlQL4Yy96-OPGQZnz6AU&ust=1694255809398000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCIjnn-_omoEDFQAAAAAdAAAAABAJ">
 ```
+
 ![image](../assets/img.jpg)

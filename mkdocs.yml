@@ -50,7 +50,7 @@ nav:
   - HTML:
       - Introduction: "html/introduction.md"
       - Template: "html/web-pages.md"
-      - Important Tags: "html/tags.md"
+      - Important Tags: "html/important-tags.md"
   - CSS:
       - Introduction: "css/intro.md"
       - Selectors: "css/selector.md"
@@ -95,6 +95,9 @@ nav:
 
   - Kafka:
       - Introduction: "kafka/intro.md"
+
+  - Observability:
+      - Introduction: "observability/intro.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
