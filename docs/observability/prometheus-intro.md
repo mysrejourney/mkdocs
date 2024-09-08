@@ -77,7 +77,7 @@ Remember
   In case your application exposes the metric in a different endpoint,
   you have to configure it in the prometheus configuration file.
 - By default, most of the servers will not collect the metrics and expose them to an endpoint.
-  That's why we install exporters in those servers and gather the metrics.
+  That's why we install exporters on those servers and gather the metrics.
 ***
 
 **Client Libraries**
@@ -103,7 +103,8 @@ Example:
 
 
 ## Push-Based Model
-The target machines send the data to the server. Server will collect them and aggregate them and do what it wants to. 
+The target machines send the data to the server.
+The Server will collect them and aggregate them and do what it wants to. 
 
 Example:
 

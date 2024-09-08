@@ -37,7 +37,7 @@ theme:
 nav:
   - Home: "index.md"
   - Bash:
-      - Conditional Statment: "bash/condition-statement.md"
+      - Conditional Statement: "bash/condition-statement.md"
       - Primary Expression: "bash/primary-expression.md"
       - Advanced Conditional: "bash/advanced-if-else.md"
       - Looping Concepts: "bash/looping-concepts.md"
@@ -98,7 +98,8 @@ nav:
 
   - Observability:
       - Introduction: "observability/intro.md"
-      - Promtheus: "observability/prometheus-intro.md"
+      - Prometheus: "observability/prometheus-intro.md"
+      - Installation: "observability/prom-install.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
