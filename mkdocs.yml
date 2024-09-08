@@ -98,6 +98,7 @@ nav:
 
   - Observability:
       - Introduction: "observability/intro.md"
+      - Promtheus: "observability/prometheus-intro.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
