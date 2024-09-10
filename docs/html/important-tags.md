@@ -129,12 +129,13 @@ Bangalore</p>
 ```html
 <ol>
   <li>Satheesh</li>
-  <li>Pandian</li>
-  <ol>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>Javascript</li>
-  </ol> 
+  <li>Pandian
+      <ol>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Javascript</li>
+      </ol>
+  </li>  
   <li>Jeganathan</li>
 </ol>
 ```
@@ -146,16 +147,18 @@ Bangalore</p>
 ```html
 <ul>
   <li>Satheesh</li>
-  <li>Pandian</li>
-  <ul>
-      <li>HTML</li>
-      <li>CSS</li>
+  <li>Pandian
       <ul>
-            <li>Heading</li>  
-            <li>Paragraph</li>  
+          <li>HTML</li>
+          <li>CSS
+              <ul>
+                    <li>Heading</li>  
+                    <li>Paragraph</li>  
+              </ul>
+          </li>
+          <li>Javascript</li>
       </ul>
-      <li>Javascript</li>
-  </ul> 
+  </li>  
   <li>Jeganathan</li>
 </ul>
 ```
