@@ -54,16 +54,16 @@ Now prometheus UI is not working.
 
 ***
 Prometheus is up and running now.
-However, if I close the terminal where prometheus executable is running or my EC2 instance si down, then the prometheus
+However, if I close the terminal where prometheus executable is running or my EC2 instance is down, then the prometheus
 also stops. Hence, this is not the ideal way to run the prometheus.
 ***
 
 
-`The ideal way of running prometheus is to install and run as a service.` 
+**The ideal way of running prometheus is to install and run as a service.** 
 
 To do so, we need to follow below steps
 
-**Step 1 Update the system packages**
+**Step 1 - Update the system packages**
 
  Run the command 
 ```html 
@@ -72,7 +72,7 @@ sudo apt update
 
 ![obs_13](../assets/obs_13.png)
 
-**Step 2 Create a system user for prometheus**
+**Step 2 - Create a system user for prometheus**
 
 System username is `prometheus`.
 Before doing it, we need to ensure `prometheus` user is not created yet. 
@@ -100,7 +100,7 @@ cat /etc/passwd | grep -i prometheus
 ![obs_16](../assets/obs_16.png)
 
 
-**Step 3 Create Directories for Prometheus**
+**Step 3 - Create Directories for Prometheus**
 
 To store configuration files and libraries for Prometheus, you need to create a few directories. 
 The directories will be located in the `/etc` and the `/var/lib` directory respectively. 
@@ -113,7 +113,7 @@ sudo mkdir /var/lib/prometheus
 
 ![obs_17](../assets/obs_17.png)
 
-**Step 4 Move the Binary Files & Set Owner**
+**Step 4 - Move the Binary Files & Set Owner**
 
 Navigate to the prometheus directory. You need to move some binary files (prometheus and promtool) and change the 
 ownership of the files to the "prometheus" user and group. You can do this with the following commands:
@@ -130,7 +130,7 @@ sudo chown prometheus:prometheus /usr/local/bin/promtool
 ![obs_18](../assets/obs_18.png)
 
 
-**Step 5 Move the Configuration Files & Set Owner**
+**Step 5 - Move the Configuration Files & Set Owner**
 
 Next, move the configuration files and set their ownership so that Prometheus can access them. 
 To do this, run the following commands:
@@ -156,7 +156,7 @@ It includes settings for targets to be monitored, data scraping frequency, data 
 ![obs_20](../assets/obs_20.png)
 
 
-**Step 6 Create Prometheus Systemd Service**
+**Step 6 - Create Prometheus Systemd Service**
 
 Now, you need to create a system service file for Prometheus. 
 Create and open a prometheus.service file with the vi text editor using:
@@ -188,7 +188,7 @@ WantedBy=multi-user.target
 
 ![obs_21](../assets/obs_21.png)
 
-**Step 7 Reload Systemd**
+**Step 7 - Reload Systemd**
 
 You need to reload the system configuration files after saving the prometheus.service file so that changes made 
 are recognized by the system. Reload the system configuration files using the following:
@@ -199,7 +199,7 @@ sudo systemctl daemon-reload
 
 ![obs_22](../assets/obs_22.png)
 
-**Step 8 Start Prometheus Service**
+**Step 8 - Start Prometheus Service**
 
 Next, you want to enable and start your Prometheus service. Do this using the following commands:
 
@@ -211,7 +211,7 @@ sudo systemctl start prometheus
 ![obs_23](../assets/obs_23.png)
 
 
-**Step 9 Check Prometheus Status**
+**Step 9 - Check Prometheus Status**
 
 After starting the Prometheus service, you may confirm that it is running or if you have encountered errors using:
 
@@ -221,7 +221,7 @@ sudo systemctl status prometheus
 
 ![obs_24](../assets/obs_24.png)
 
-**Step 10 Update firewall rules**
+**Step 10 - Update firewall rules**
 Prometheus runs on port 9090 by default, so you need to allow port 9090 on your firewall, Do that using the command:
 
 ```html

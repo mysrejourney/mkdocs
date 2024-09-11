@@ -1,7 +1,8 @@
+# CSS Selectors
 
-#CSS Selectors
-###Normal selector
-```html
+## Normal selector
+
+```html index.html
 <head>
     <link href="./style.css" rel="stylesheet">
 </head>
@@ -11,7 +12,8 @@
     <p>Satheesh Pandian</p>
 </body>
 ```
-```css
+
+```css style.css
 h3 {
   color: blue;
 }
@@ -19,12 +21,15 @@ p {
   color: red;
 }
 ```
-In the above example, h3 and p are called as selectors as they are updated in CSS file and changing the property based on the value mentioned in CSS file. 
+In the above example, h3 and p are called as selectors as they are updated in CSS file and changing the property 
+based on the value mentioned in CSS file. 
 
 ![selector_normal](../assets/selector_normal.jpg)
 
-###Class selector(.)
+### Class selector(.)
+
 <mark>You can select any HTML element as a normal selector</mark>
+
 ```html linenums="1"
 <head>
     <link href="./style.css" rel="stylesheet">
@@ -35,6 +40,7 @@ In the above example, h3 and p are called as selectors as they are updated in CS
     <p class="class-name">Satheesh Pandian</p>
 </body>
 ```
+
 ```css 
 h3 {
   color: blue;
@@ -46,11 +52,13 @@ p {
     color: violet
 }
 ```
+
 ![selector_class](../assets/selector_class.jpg)
 
 In the above example, though `p` element is defined in CSS file, `class-name` value has been applied due to high priority.
 
 class selector starts with `.` in the CSS file. <mark>You can apply class name to multiple HTML elements.</mark>
+
 ```html
 <head>
     <link href="./style.css" rel="stylesheet">
@@ -62,6 +70,7 @@ class selector starts with `.` in the CSS file. <mark>You can apply class name t
     <h5 class="class-name">This is h5</h5>
 </body>
 ```
+
 ```css 
 h3 {
   color: blue;
@@ -73,9 +82,11 @@ p {
     color: deeppink
 }
 ```
+
 ![selector_class_multiple](../assets/selector_class_multiple.jpg)
 
-###ID selector (#)
+### ID selector (#)
+
 ```html linenums="1"
 <head>
     <link href="./style.css" rel="stylesheet">
@@ -86,6 +97,7 @@ p {
     <p id="satheesh-id">Satheesh Pandian</p>
 </body>
 ```
+
 ```css 
 h3 {
   color: blue;
@@ -97,9 +109,11 @@ p {
     color: darkorange
 }
 ```
+
 ID selector starts with `#` in the CSS file. This is unique, and <mark>you CANNOT apply id more than one HTML element.</mark>
 
-###Attribute selector
+### Attribute selector
+
 ```html linenums="1"
 <head>
     <link href="./style.css" rel="stylesheet">
@@ -111,6 +125,7 @@ ID selector starts with `#` in the CSS file. This is unique, and <mark>you CANNO
     <p draggable="true">This is draggable</p>
 </body>
 ```
+
 ```css 
 p {
   color: red;
@@ -122,11 +137,13 @@ p[draggable] {
   color: deeppink;
 }
 ```
+
 Here, draggable is an attribute. <mark>You can select any attribute</mark>
 
 ![draggable](../assets/draggable.jpg)
 
-###All selector (*)
+### All selector (*)
+
 ```html linenums="1"
 <head>
     <link href="./style.css" rel="stylesheet">
@@ -138,6 +155,7 @@ Here, draggable is an attribute. <mark>You can select any attribute</mark>
     <p draggable="true">This is draggable</p>
 </body>
 ```
+
 ```css 
 * {
   color: darkmagenta;
@@ -149,4 +167,5 @@ h3 {
   color: deeppink;
 }
 ```
+
 ![all_selector](../assets/all_selector.jpg)
