@@ -170,3 +170,80 @@ curl localhost:9100/metrics
 ```
 ![obs_43](../assets/obs_43.png)
 
+## Integrate Node Exporter with Prometheus
+
+Prometheus scrapes the target and pulls the metrics.
+So, it should know what the target is prior to pull the metrics.
+Prometheus target configuration is configured in the `prometheus.yml` file by default.
+Hence, we need to update the configuration file with the target details of node exporter server details.
+After this change, restart the prometheus.
+Then, Prometheus will start to scrape the node metrics after restarting the prometheus.
+
+**Step 1 - Check Prometheus server status and Node exporter status**
+
+Connect the prometheus server in the terminal and run the following command.
+
+```html
+systemctl status prometheus.service
+```
+![obs_44](../assets/obs_44.png)
+
+Connect the node exporter machine in the terminal and run the following command.
+
+```html
+systemctl status node_exporter.service
+```
+
+![obs_45](../assets/obs_45.png)
+
+**Step 2 - Update prometheus configuration file**
+
+Add the node server ip address in the target section to ensure prometheus knows what machine it needs to scrape.
+
+```html
+  - job_name: "Node server"
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["172.31.84.187:9100"]
+```
+
+![obs_46](../assets/obs_46.png)
+
+**Step 3 - Restart Prometheus Server**
+
+Connect the prometheus server in the terminal and run the following command.
+
+```html
+systemctl restart prometheus.service
+```
+![obs_47](../assets/obs_47.png)
+
+**Step 4 - Check Prometheus server status**
+
+Connect the prometheus server in the terminal and run the following command.
+
+```html
+systemctl status prometheus.service
+```
+![obs_44](../assets/obs_44.png)
+
+**Step 5 - Check Prometheus UI for target status**
+
+Open the browser and enter the <prometheus server IP:9090>. 
+
+![obs_48](../assets/obs_48.png)
+
+Click on the menu "Status -> Targets"
+
+![obs_49](../assets/obs_49.png)
+
+As we see, prometheus server is able to understand the node service and where it is running,
+what is the current state, etc. 
+
+If we go to the "graph" menu, and type "node" you will be able to see all the metrics related to node service.
+
+![obs_50](../assets/obs_50.png)
+
+That's all. Simple, isn't it? 

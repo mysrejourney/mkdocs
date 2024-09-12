@@ -2,7 +2,7 @@
 
 ## Normal selector
 
-```html index.html
+```html
 <head>
     <link href="./style.css" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
 </body>
 ```
 
-```css style.css
+```css 
 h3 {
   color: blue;
 }
@@ -30,7 +30,7 @@ based on the value mentioned in CSS file.
 
 <mark>You can select any HTML element as a normal selector</mark>
 
-```html linenums="1"
+```html
 <head>
     <link href="./style.css" rel="stylesheet">
 </head>
@@ -87,7 +87,7 @@ p {
 
 ### ID selector (#)
 
-```html linenums="1"
+```html 
 <head>
     <link href="./style.css" rel="stylesheet">
 </head>
@@ -114,7 +114,7 @@ ID selector starts with `#` in the CSS file. This is unique, and <mark>you CANNO
 
 ### Attribute selector
 
-```html linenums="1"
+```html 
 <head>
     <link href="./style.css" rel="stylesheet">
 </head>
@@ -144,7 +144,7 @@ Here, draggable is an attribute. <mark>You can select any attribute</mark>
 
 ### All selector (*)
 
-```html linenums="1"
+```html 
 <head>
     <link href="./style.css" rel="stylesheet">
 </head>
