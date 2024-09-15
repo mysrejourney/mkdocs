@@ -102,6 +102,7 @@ nav:
       - Prometheus: "observability/prometheus-intro.md"
       - Installation: "observability/prom-install.md"
       - Node Exporter: "observability/node-exporter.md"
+      - Authorization: "observability/authorization.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
