@@ -36,6 +36,7 @@ theme:
 #PAGE NAVIGATION
 nav:
   - Home: "index.md"
+
   - Bash:
       - Conditional Statement: "bash/condition-statement.md"
       - Primary Expression: "bash/primary-expression.md"
@@ -47,16 +48,20 @@ nav:
       - IFS: "bash/ifs.md"
       - Special Parameters: "bash/special-parameters.md"
       - Stream Editor (sed): "bash/sed.md"
+
   - HTML:
       - Introduction: "html/introduction.md"
       - Template: "html/web-pages.md"
       - Important Tags: "html/important-tags.md"
+
   - CSS:
       - Introduction: "css/intro.md"
       - Selectors: "css/selector.md"
       - Colors: "css/color.md"
-      - Order of Style: "css/cascade-priority.md"
       - Box Model: "css/box-model.md"
+      - Order of Style: "css/cascade-priority.md"
+      - CSS Positioning: "css/positioning.md"
+
   - Terraform:
       - Infrastructure As Code: "terraform/iac.md"
       - Introduction: "terraform/intro.md"
@@ -66,6 +71,7 @@ nav:
       - Basic Commands: "terraform/commands.md"
       - Work with Terraform: "terraform/work_terraform.md"
       - Terraform in AWS: "terraform/terraform_in_aws.md"
+
   - K8s:
       - Architecture: "k8s/k8-arch.md"
       - ContainerD: "k8s/containerd.md"
@@ -102,7 +108,7 @@ nav:
       - Prometheus: "observability/prometheus-intro.md"
       - Installation: "observability/prom-install.md"
       - Node Exporter: "observability/node-exporter.md"
-      - Authorization: "observability/authorization.md"
+      - Authentication: "observability/authentication.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"

@@ -1,12 +1,18 @@
 # Order of Style
-Let's say, if there are two css implementation mentioned for one HTML document, then which css rule will be applied to that HTML element. The order of style implementation matters when you work with CSS.
 
-`1. Type of the style`
-1. inline style takes the highest priority
-2. internal style takes next place
-3. external style takes the least priority out of these three.
+Let's say, if there are two CSS implementations mentioned for one HTML document, 
+then which CSS rule will be applied to that HTML element. 
+The order of style implementation matters when you work with CSS.
+
+**1. Type of the style**
+
+* Inline style takes the highest priority
+* Internal style takes next place
+* External style takes the least priority out of these three.
+
 
 **Example**
+
 ```html
 <html>
 
@@ -29,7 +35,8 @@ Let's say, if there are two css implementation mentioned for one HTML document, 
 
 </html>
 ```
-```css
+
+```html
 li {
   color: green;
 }
@@ -38,12 +45,17 @@ li {
 
 **Explanation**
 
-Though external CSS style rule for `li` component color is green, internal CSS style rule is applied for list # 2 and 3. This is because internal style takes more priority than external style.
-At the sametime, list # 1 color is red because it takes inline style rule which is higher priority than internal and external style.
+Though external CSS style rule for `li` component color is green, internal CSS style rule is applied for list # 2 and 3. 
+This is because internal style takes more priority than external style.
+At the same time,
+list # 1 color is red because it takes inline style rule which is higher priority than internal and external style.
 
-There are four other important rules to implement CSS rules in HTML document.
+There are four other important rules to implement CSS rules in the HTML document.
 
-`2. Position :` The position where the rule defines matter. The latest CSS rule will be applied in the HTML document.
+**2. Position**
+
+The position where the rule defines matter. The latest CSS rule will be applied in the HTML document.
+
 ```html
 <html>
 <head>
@@ -65,11 +77,14 @@ There are four other important rules to implement CSS rules in HTML document.
 </body>
 </html>
 ```
-In the above case, text color is two different colors (blue and yellowgreen). When we implement this rule, yellowgreen will be implemented as it is the latest rule (from TOP to BOTTOM approach)
+
+In the above case, text color is two different colors (blue and yellow-green).
+When we implement this rule, yellow-green will be implemented as it is the latest rule (from TOP to BOTTOM approach)
 
 ![position](../assets/position.jpg)
 
-Let us assume, if there are two rules created for same `li` component like below
+Let us assume it, if there are two rules created for same `li` component like below
+
 ```html
     <style>
         li {
@@ -83,20 +98,24 @@ Let us assume, if there are two rules created for same `li` component like below
         }
     </style>
 ```
-In the above  case, orangered is the latest color (from TOP to BOTTOM) and it will be implemented in `li` HTML element.
+In the above case, orangered is the latest color (from TOP to BOTTOM), and it will be implemented in `li` HTML element.
 
 ![position_1](../assets/position_1.jpg)
 
 
-`3. Specificity :` Based on how specific a selector is applied CSS rule.
+**3. Specificity** 
+
+Based on how specific a selector is applied CSS rule.
 
 **Priority order**
+
 1. ID
 2. Attribute
 3. Class
 4. HTML element
 
 **Example**
+
 ```html
 <html>
 <head>
@@ -126,7 +145,9 @@ li[draggable] {
   color: blue;
 }
 ```
-In the above example, there are 4 rules applied in list # 1 component. Out of these 4 rules, ID takes high priority. Hence, it is displaying in red color.
+In the above example, there are four rules applied in the list # 1 component. 
+Out of these four rules, ID takes high priority. 
+Hence, it is displayed in red color.
 
 ![specificity_id](../assets/specificity_id.jpg)
 
@@ -144,7 +165,10 @@ In the above example, there are 4 rules applied in list # 1 component. Out of th
 </body>
 </html>
 ```
-In the above example, there are 3 rules applied in list # 1 component. Out of these 3 rules, Attribute (draggable) takes high priority. Hence, it is displaying in yellow color.
+
+In the above example, there are three rules applied in the list # 1 component. 
+Out of these three rules, Attribute (draggable) takes high priority. 
+Hence, it is displayed in yellow color.
 
 ![specificity_attribute](../assets/specificity_attribute.jpg)
 
@@ -163,12 +187,16 @@ In the above example, there are 3 rules applied in list # 1 component. Out of th
 </body>
 </html>
 ```
-In the above example, there are 2 rules applied in list # 1 component. Out of these 2 rules, class takes high priority. Hence, it is displaying in blue color.
+In the above example, there are two rules applied in the list # 1 component. 
+Out of these two rules, class takes high priority. 
+Hence, it is displayed in blue color.
 
 ![specificity_class](../assets/specificity_class.jpg)
 
 
-`4. Importance`: When `important` keyword mentioned in the property, this takes the highest priority compared to all other cases.
+**4. Importance**
+
+When `important` keyword mentioned in the property, this takes the highest priority compared to all other cases.
 
 ```css
 li[draggable] {
@@ -201,13 +229,30 @@ li {
 </html>
 ```
 
-In the above example, all the rules applied in list #1 component. Out of all these rules, `important` takes high priority. Hence, it is displaying in green color. Note, as `important` keyword applied in list component, it applies all the list values.
+In the above example, all the rules applied in the list are #1 component.
+Out of all these rules, `important` takes high priority. 
+Hence, it is displayed in green color. 
+Note, as `important` keyword applied in the list component, it applies all the list values.
 
 
 ![importance](../assets/importance.jpg)
 
-###Combining CSS selectors
-We can select multiple selectors and apply the rule in single HTML element or group of elements.
+
+Remember
+
+***
+If all the rules are applied in the HTML element, the priority order is
+
+1. Importance
+2. Type
+3. Specificity
+4. Position
+
+***
+
+# Combining CSS selectors
+
+We can select multiple selectors and apply the rule in a single HTML element or group of elements.
 
 `1. Group` : Apply both the selectors
 
@@ -244,16 +289,19 @@ We can select multiple selectors and apply the rule in single HTML element or gr
 </body>
 </html>
 ```
-If I want to apply different color ONLY to h1 and h2. Note, you can select `n` number of selectors and group them.
+
+If I want to apply different colors ONLY to h1 and h2. Note, you can select `n` number of selectors and group them.
+
 ```css
 h1,h2 {
     color: blueviolet;
 }
 ```
+
 ![group_selector](../assets/group_selector.jpg)
 
 
-`2. Child` : This will apply the CSS rule to the direct child element
+`2. Child` : This will apply the CSS rule to the direct child element (only one level nested inside means first generation only)
 
 **Syntax**
 ```css
@@ -300,7 +348,8 @@ If I want to apply different color ONLY to `p` which is under `div`.
 ![child](../assets/child.jpg)
 
 
-`3. Descendant` : This will apply the CSS rule to the all child elements under parent selector
+`3. Descendant` : This will apply the CSS rule to the all child elements under parent selector (As long as a child element 
+comes under parent in any nested level inside)
 
 **Syntax**
 ```css
@@ -346,7 +395,27 @@ If I want to apply different color ONLY to `li` under `div`.
 ![descendant](../assets/descendant.jpg)
 
 
-`4. Chaining` : This will apply the CSS rule to the all selectors are TRUE. We can pick specific element using this selector
+`4. Chaining` : This will apply the CSS rule to the all selectors are TRUE. 
+We can pick a specific element using this selector.
+If the content has class, id and element, then the selector rule always starts with an element.
+
+Example:
+
+```html
+<h1 id="name" class="sats pan">Satheesh</h1>
+<h1 class="sats pan">Pandian</h1>
+
+```
+Then if we want to select `Satheesh`, then the CSS rule is
+
+```html
+h1#name.sats.pan{
+  color: red
+}
+```
+
+As you see the above CSS code snippets, it starts with h1 element instead of id or class name.
+
 
 **Syntax**
 ```css
@@ -391,9 +460,11 @@ If I want to apply different color ONLY to `li` (last two items) under `div`.
 ```
 ![chain](../assets/chain.jpg)
 
-`5. Combine combiners` : This is similar to descendant. However, first one is ancestor(parent) and second one is chaining selector
+`5. Combine combiners` : This is similar to descendant. 
+However, the first one is ancestor(parent) and the second one is chaining selector
 
 **Syntax**
+
 ```css
  selector1 selector2selector3 {
     font-size: 0.5rem;
@@ -426,6 +497,7 @@ If I want to apply different color ONLY to `li` (last two items) under `div`.
 </body>
 </html>
 ```
+
 If I want to apply different font size for `p` and class is `done`
 
 **Example**
