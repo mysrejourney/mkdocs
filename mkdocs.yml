@@ -109,6 +109,7 @@ nav:
       - Installation: "observability/prom-install.md"
       - Node Exporter: "observability/node-exporter.md"
       - Authentication: "observability/authentication.md"
+#      - Docker Monitoring: "observability/docker-monitoring.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"

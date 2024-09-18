@@ -3,56 +3,9 @@
 Let's say, if there are two CSS implementations mentioned for one HTML document, 
 then which CSS rule will be applied to that HTML element. 
 The order of style implementation matters when you work with CSS.
-
-**1. Type of the style**
-
-* Inline style takes the highest priority
-* Internal style takes next place
-* External style takes the least priority out of these three.
-
-
-**Example**
-
-```html
-<html>
-
-<head>
-    <link rel="stylesheet" href="./style.css">
-    <style>
-        li {
-            color: blue
-        }
-    </style>
-</head>
-
-<body>
-    <ul>
-        <li style="color:red">Satheesh</li>
-        <li>Pandian</li>
-        <li>Jeganathan</li>
-    </ul>
-</body>
-
-</html>
-```
-
-```html
-li {
-  color: green;
-}
-```
-![order](../assets/order.jpg)
-
-**Explanation**
-
-Though external CSS style rule for `li` component color is green, internal CSS style rule is applied for list # 2 and 3. 
-This is because internal style takes more priority than external style.
-At the same time,
-list # 1 color is red because it takes inline style rule which is higher priority than internal and external style.
-
 There are four other important rules to implement CSS rules in the HTML document.
 
-**2. Position**
+**1. Position**
 
 The position where the rule defines matter. The latest CSS rule will be applied in the HTML document.
 
@@ -102,8 +55,11 @@ In the above case, orangered is the latest color (from TOP to BOTTOM), and it wi
 
 ![position_1](../assets/position_1.jpg)
 
+**Summary:**
 
-**3. Specificity** 
+![obs_76.png](../assets/obs_76.png)
+
+**2. Specificity** 
 
 Based on how specific a selector is applied CSS rule.
 
@@ -194,6 +150,69 @@ Hence, it is displayed in blue color.
 ![specificity_class](../assets/specificity_class.jpg)
 
 
+**Summary**
+
+![obs_77.png](../assets/obs_77.png)
+
+![obs_78.png](../assets/obs_78.png)
+
+![obs_79.png](../assets/obs_79.png)
+
+
+**3. Type of the style**
+
+* Inline style takes the highest priority
+* Internal style takes next place
+* External style takes the least priority out of these three.
+
+
+**Example**
+
+```html
+<html>
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        li {
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li style="color:red">Satheesh</li>
+        <li>Pandian</li>
+        <li>Jeganathan</li>
+    </ul>
+</body>
+
+</html>
+```
+
+```html
+li {
+  color: green;
+}
+```
+![order](../assets/order.jpg)
+
+**Explanation**
+
+Though external CSS style rule for `li` component color is green, internal CSS style rule is applied for list # 2 and 3. 
+This is because internal style takes more priority than external style.
+At the same time,
+list # 1 color is red because it takes inline style rule which is higher priority than internal and external style.
+
+**Summary**
+
+![obs_80.png](../assets/obs_80.png)
+
+![obs_81.png](../assets/obs_81.png)
+
+![obs_82.png](../assets/obs_82.png)
+
 **4. Importance**
 
 When `important` keyword mentioned in the property, this takes the highest priority compared to all other cases.
@@ -254,7 +273,9 @@ If all the rules are applied in the HTML element, the priority order is
 
 We can select multiple selectors and apply the rule in a single HTML element or group of elements.
 
-`1. Group` : Apply both the selectors
+**1. Group Selector** 
+
+Apply both the selectors
 
 **Syntax**
 ```css
@@ -300,8 +321,13 @@ h1,h2 {
 
 ![group_selector](../assets/group_selector.jpg)
 
+**Summary**
 
-`2. Child` : This will apply the CSS rule to the direct child element (only one level nested inside means first generation only)
+![obs_83.png](../assets/obs_83.png)
+
+**2. Child** 
+
+This will apply the CSS rule to the direct child element (only one level nested inside means first generation only)
 
 **Syntax**
 ```css
@@ -348,7 +374,15 @@ If I want to apply different color ONLY to `p` which is under `div`.
 ![child](../assets/child.jpg)
 
 
-`3. Descendant` : This will apply the CSS rule to the all child elements under parent selector (As long as a child element 
+**Summary**
+
+![obs_84.png](../assets/obs_84.png)
+
+
+
+**3. Descendant:** 
+
+This will apply the CSS rule to the all child elements under parent selector (As long as a child element 
 comes under parent in any nested level inside)
 
 **Syntax**
@@ -394,8 +428,14 @@ If I want to apply different color ONLY to `li` under `div`.
 ```
 ![descendant](../assets/descendant.jpg)
 
+**Summary:**
 
-`4. Chaining` : This will apply the CSS rule to the all selectors are TRUE. 
+![obs_86.png](../assets/obs_86.png)
+
+
+**4. Chaining** 
+
+This will apply the CSS rule to the all selectors are TRUE. 
 We can pick a specific element using this selector.
 If the content has class, id and element, then the selector rule always starts with an element.
 
@@ -460,7 +500,13 @@ If I want to apply different color ONLY to `li` (last two items) under `div`.
 ```
 ![chain](../assets/chain.jpg)
 
-`5. Combine combiners` : This is similar to descendant. 
+**Summary** 
+
+![obs_87.png](../assets/obs_87.png)
+
+**5. Combine combiners** 
+
+This is similar to descendant. 
 However, the first one is ancestor(parent) and the second one is chaining selector
 
 **Syntax**
@@ -507,4 +553,9 @@ ul p.done{
 }
 ```
 ![combiner.jpg](../assets/combiner.jpg)
+
+**Summary:**
+
+![obs_87.png](../assets/obs_87.png)
+
 
