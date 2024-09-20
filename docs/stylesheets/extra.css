@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Mukta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Borel&display=swap');
+
 @font-face {
     font-family: 'Mukta', sans-serif;
     font-family: 'Inter', sans-serif;
 }
 :root {
-  --md-text-font: "Monaco", monospace;
-  --md-code-font: "Lucida Console", Monospace;
+  --md-text-font: "Borel", cursive;
+  --md-code-font: "Ubuntu", sans-serif;
 }
 ::selection {
   background: 'cyan';
-}
-h1{
-  color: red
 }
