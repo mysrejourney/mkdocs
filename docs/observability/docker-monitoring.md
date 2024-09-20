@@ -1,4 +1,4 @@
-# Docker Monitoring
+# Docker Engine & Container Monitoring
 
 We can monitor the docker engine and docker containers in prometheus. 
 
@@ -6,13 +6,15 @@ I am using EC2 instance (my ubuntu server)
 where docker engine is running and another EC2 instance where prometheus server is running that will scrape docker engine
 and containers metrics from my ubuntu server.
 
+## Docker Engine Monitoring
+
 **Step 1 - Update docker daemon configuration**
 
 Create/update the docker daemon file located at `/etc/docker/daemon.json`
 
 ```html
 {
-  "metrics-addr": "127.0.0.1:9323",
+  "metrics-addr": "0.0.0.0:9323",
   "experimental": true
 }
 ```
@@ -28,6 +30,9 @@ systemctl restart docker
 ```
 
 ![obs_72.png](../assets/obs_72.png)
+
+
+
 
 **Step 3 - Check locally if the docker metrics are visible**
 
@@ -55,4 +60,11 @@ systemctl restart prometheus
 ```
 
 ![obs_75.png](../assets/obs_75.png)
+
+
+**Step 6 - Check the target status in prometheus UI**
+
+![obs_103.png](../assets/obs_103.png)
+
+![obs_104.png](../assets/obs_104.png)
 

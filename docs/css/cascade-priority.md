@@ -382,7 +382,7 @@ If I want to apply different color ONLY to `p` which is under `div`.
 
 **3. Descendant:** 
 
-This will apply the CSS rule to the all child elements under parent selector (As long as a child element 
+This will apply the CSS rule to all child elements under parent selector (As long as a child element 
 comes under parent in any nested level inside)
 
 **Syntax**
