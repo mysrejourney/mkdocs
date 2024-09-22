@@ -114,7 +114,7 @@ nav:
 
   - HA Proxy:
       - Introduction: "haproxy/intro.md"
-      - HA Proxy Configuration: "haproxy/haproxy.cfg"
+      - HA Proxy Configuration: "haproxy/haproxy.md"
       - Round-robin Algorithm: "haproxy/round-robin.md"
       - Weight Based Algorithm: "haproxy/weight.md"
 
