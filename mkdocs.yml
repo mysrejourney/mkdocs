@@ -112,6 +112,12 @@ nav:
       - Docker Monitoring: "observability/docker-monitoring.md"
       - PromQL: "observability/promql.md"
 
+  - HA Proxy:
+      - Introduction: "haproxy/intro.md"
+      - HA Proxy Configuration: "haproxy/haproxy.cfg"
+      - Round-robin Algorithm: "haproxy/round-robin.md"
+      - Weight Based Algorithm: "haproxy/weight.md"
+
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
 
