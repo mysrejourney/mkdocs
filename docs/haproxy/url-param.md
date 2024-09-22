@@ -1,20 +1,19 @@
-# Weighted Round-Robin Algorithm
+# URL Hashing Algorithm
 
-It distributes the requests to the servers based on the weightage defined. It doesn't consider the server capacity or load.
+It distributes the requests to the servers based on the url parameter defined. .
 
-![ha_13.png](../assets/ha_13.png)
+![ha_20.png](../assets/ha_20.png)
 
 Let us assume that there are three servers running in the cluster,
 and the incoming requests are distributed among these three servers
-and the scheduling algorithm is configured as `weighted round-robin` algorithm.
-The weightages of the servers are 2,1,3 respectively (Higher number is the higher priority).
+and the scheduling algorithm is configured as `url param` algorithm.
 
-If there are six incoming requests to the load balancer,
-three of the incoming requests go to the third server,
-two of the incoming requests go to the first server, and one request goes to the second server.
+If there is an incoming request along with url parameter defined to the load balancer,
+then it will be served by any one of the web servers.
+From this moment, whatever request comes with the same url parameter goes to this web server only. 
 
 
-## HA Proxy configuration for weighted round-robin
+## HA Proxy configuration for URL Hashing 
 
 I am running HA proxy in EC2 ubuntu machine.
 I am also creating three APIs running on different ports using Flask application.
@@ -42,14 +41,13 @@ frontend http_front
     default_backend servers
 
 backend servers
-    balance roundrobin
-    server server1 app1:5001 weight 2 check
-    server server2 app2:5002 weight 1 check
-    server server3 app3:5003 weight 3 check
-
+    balance url_param userid
+    server server1 app1:5001 check
+    server server2 app2:5002 check
+    server server3 app3:5003 check
 ```
 
-![ha_14.png](../assets/ha_14.png)
+![ha_21.png](../assets/ha_21.png)
 
 **app1.py**
 
@@ -240,22 +238,14 @@ Let us create the containers using `docker compose up -d` command
 
 ![ha_7.png](../assets/ha_7.png)
 
-Hit the load balance url a couple of times. Each time the request goes to different server.
+Hit the load balance url with `userid` parameter for few times. 
 
-![ha_11.png](../assets/ha_11.png)
+![ha_22.png](../assets/ha_22.png)
 
-![ha_9.png](../assets/ha_9.png)
 
-![ha_11.png](../assets/ha_11.png)
-
-![ha_10.png](../assets/ha_10.png)
-
-![ha_11.png](../assets/ha_11.png)
-
-![ha_9.png](../assets/ha_9.png)
+![ha_23.png](../assets/ha_23.png)
 
 Check the logs of the ha proxy container
 
-![ha_15.png](../assets/ha_15.png)
-
+![ha_24.png](../assets/ha_24.png)
 

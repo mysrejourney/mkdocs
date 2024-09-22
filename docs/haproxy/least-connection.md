@@ -1,20 +1,24 @@
-# Weighted Round-Robin Algorithm
+# Least Connection Algorithm
 
-It distributes the requests to the servers based on the weightage defined. It doesn't consider the server capacity or load.
+It distributes the requests to the servers which have the least number of connections. 
 
-![ha_13.png](../assets/ha_13.png)
+![ha_25.png](../assets/ha_25.png)
 
 Let us assume that there are three servers running in the cluster,
 and the incoming requests are distributed among these three servers
-and the scheduling algorithm is configured as `weighted round-robin` algorithm.
-The weightages of the servers are 2,1,3 respectively (Higher number is the higher priority).
+and the scheduling algorithm is configured as `round-robin` algorithm. 
 
-If there are six incoming requests to the load balancer,
-three of the incoming requests go to the third server,
-two of the incoming requests go to the first server, and one request goes to the second server.
+There are three incoming requests to the load balancer. The first server is handling ten connections, and the second 
+server is handling seven connections, and the third server is handling five connections.
+We are getting some another three incoming requests,
+and the first two requests are assigned to the third server as it has five connections, and now it has seven connections.
+At this point, the second and third servers are serving seven connections,
+and the first server is serving ten connections.
+The third incoming request will be assigned either the third server or the second server
+as they are having the least number of connections at the moment.
 
 
-## HA Proxy configuration for weighted round-robin
+## HA Proxy configuration for Least Connection
 
 I am running HA proxy in EC2 ubuntu machine.
 I am also creating three APIs running on different ports using Flask application.
@@ -42,14 +46,14 @@ frontend http_front
     default_backend servers
 
 backend servers
-    balance roundrobin
-    server server1 app1:5001 weight 2 check
-    server server2 app2:5002 weight 1 check
-    server server3 app3:5003 weight 3 check
+    balance leastconn
+    server server1 app1:5001 check
+    server server2 app2:5002 check
+    server server3 app3:5003 check
 
 ```
 
-![ha_14.png](../assets/ha_14.png)
+![ha_26.png](../assets/ha_26.png)
 
 **app1.py**
 
@@ -244,18 +248,7 @@ Hit the load balance url a couple of times. Each time the request goes to differ
 
 ![ha_11.png](../assets/ha_11.png)
 
-![ha_9.png](../assets/ha_9.png)
-
 ![ha_11.png](../assets/ha_11.png)
 
 ![ha_10.png](../assets/ha_10.png)
-
-![ha_11.png](../assets/ha_11.png)
-
-![ha_9.png](../assets/ha_9.png)
-
-Check the logs of the ha proxy container
-
-![ha_15.png](../assets/ha_15.png)
-
 

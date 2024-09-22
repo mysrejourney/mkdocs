@@ -117,6 +117,8 @@ nav:
       - HA Proxy Configuration: "haproxy/haproxy.md"
       - Round-robin Algorithm: "haproxy/round-robin.md"
       - Weight Based Algorithm: "haproxy/weight.md"
+      - URL Hashing Algorithm: "haproxy/url-param.md"
+      - Least Connection Algorithm: "haproxy/least-connection.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
