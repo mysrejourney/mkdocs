@@ -61,6 +61,7 @@ nav:
       - Box Model: "css/box-model.md"
       - Order of Style: "css/cascade-priority.md"
       - CSS Positioning: "css/positioning.md"
+      - CSS Display: "css/css-display.md"
 
   - Terraform:
       - Infrastructure As Code: "terraform/iac.md"
