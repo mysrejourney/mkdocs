@@ -120,6 +120,9 @@ nav:
       - Weight Based Algorithm: "haproxy/weight.md"
       - URL Hashing Algorithm: "haproxy/url-param.md"
       - Least Connection Algorithm: "haproxy/least-connection.md"
+      - Source IP Algorithm: "haproxy/source-ip.md"
+      - HA Proxy Monitoring: "haproxy/monitoring.md"
+      - Access Control List: "haproxy/acl.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
