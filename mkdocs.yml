@@ -98,6 +98,8 @@ nav:
       - Conditions: "helm/conditions.md"
       - Chart Hooks: "helm/chart-hooks.md"
 
+  - AWS:
+      - ECS: "aws/ecs-intro.md"
   - Ansible:
       - Introduction: "ansible/intro.md"
 
