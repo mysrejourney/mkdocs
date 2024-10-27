@@ -5,7 +5,7 @@ ECS is nothing but a container orchestrator managed by AWS.
 ECS helps to deploy an application and load balancing between the servers.
 It also helps to autoscale when the traffic is high.
 Rollout of the application is also easy
-(When we are updating our code and deploying the updated code without disturbing, the end user experience is easy via ECS).
+(When we are updating our code and deploying the updated code without disturbing, the end user experience is straightforward via ECS).
 </mark>
 
 Let us assume that we build an application and created docker images for it.
@@ -77,6 +77,39 @@ Hence, AWS manages the underlying resources (infrastructure).
 | No need to manage infrastructure         | ECS/Fargate takes care of infrastructure |
 
 
-Autoscaling will automatically take care by Fargate, and we need to pay as per use.
+Autoscaling will automatically take care of Fargate, and we need to pay as per use.
+
+
+## ECS Task Definition
+
+Task definition file is nothing but a collection of instructions
+tell that how the containers should be deployed and what configuration a container should have like CPU, memory, etc. 
+In short, it is a blueprint of the container.
+
+Task is nothing but a running container created using this task definition file.
+If we want to run three different instances (containers), you need to create three tasks using task definition file.
+
+![aws_3.png](../assets/aws_3.png)
+
+
+## ECS Services
+
+ECS services ensure that the number of tasks is running all the time.This is the kind of orchestrator
+who manages the tasks.
+Also, it will monitor EC2 instances.
+If any of the EC2 instances fails,
+then it will create a task using task definition file and run it in working EC2 instance.
+
+![aws_4.png](../assets/aws_4.png)
+
+## ECS Load balancer
+
+Load balancer will route the traffic to the containers via services.
+This will help us to ensure all the containers are sharing the load and also autoscaling when the demand increases.
+
+![aws_5.png](../assets/aws_5.png)
+
+
+
 
 

@@ -100,6 +100,7 @@ nav:
 
   - AWS:
       - ECS: "aws/ecs-intro.md"
+      - Deploy App: "aws/deploy-app-in-ecs.md"
   - Ansible:
       - Introduction: "ansible/intro.md"
 
