@@ -99,8 +99,9 @@ nav:
       - Chart Hooks: "helm/chart-hooks.md"
 
   - AWS:
-      - ECS: "aws/ecs-intro.md"
-      - Deploy App: "aws/deploy-app-in-ecs.md"
+      - VPC: "aws/vpc/vpc-intro.md"
+      - ECS: "aws/ecs/ecs-intro.md"
+      - Deploy App: "aws/ecs/deploy-app-in-ecs.md"
   - Ansible:
       - Introduction: "ansible/intro.md"
 

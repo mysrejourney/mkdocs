@@ -50,7 +50,7 @@ ECS control panel is responsible to manage the container life cycle.
 It will talk to ECS agent in the EC2 instance and plan the containers accordingly (create/manage/destroy containers).
 You have full control as you are taking care of infrastructure.
 
-![aws_1.png](../assets/aws_1.png)
+![aws_1.png](../../assets/aws_1.png)
 
 | **Your Responsibility**                              | **ECS Responsibility**                   |
 |------------------------------------------------------|------------------------------------------|
@@ -68,7 +68,7 @@ ECS will talk to Fargate and ask the infrastructure.
 Then, Fargate will create a physical machine to deploy the container.
 Hence, AWS manages the underlying resources (infrastructure).
 
-![aws_2.png](../assets/aws_2.png)
+![aws_2.png](../../assets/aws_2.png)
 
 
 | **Your responsibility**                  | **ECS Responsibility (AWS Fargate)**     |
@@ -89,7 +89,7 @@ In short, it is a blueprint of the container.
 Task is nothing but a running container created using this task definition file.
 If we want to run three different instances (containers), you need to create three tasks using task definition file.
 
-![aws_3.png](../assets/aws_3.png)
+![aws_3.png](../../assets/aws_3.png)
 
 
 ## ECS Services
@@ -100,14 +100,14 @@ Also, it will monitor EC2 instances.
 If any of the EC2 instances fails,
 then it will create a task using task definition file and run it in working EC2 instance.
 
-![aws_4.png](../assets/aws_4.png)
+![aws_4.png](../../assets/aws_4.png)
 
 ## ECS Load balancer
 
 Load balancer will route the traffic to the containers via services.
 This will help us to ensure all the containers are sharing the load and also autoscaling when the demand increases.
 
-![aws_5.png](../assets/aws_5.png)
+![aws_5.png](../../assets/aws_5.png)
 
 
 
