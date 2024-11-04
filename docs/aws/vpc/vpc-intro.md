@@ -154,7 +154,7 @@ If we want to assign IP address from 195.8.4.0 to 195.8.4.99 to all 100 machines
 
 ### How IP address (IPv4) forms
 
-Let us understand how the IP address forms first. As we know, IP address is a binary octave.
+Let us understand how the IP address forms first. As we know, IP address is a binary octave, and its 32 bits.
 
 `00110001.00100101.11011010.00001101` is actual IP address in the network (All are in 0 and 1 - binary).
 
@@ -195,8 +195,50 @@ The number of IP addresses is 2 to the power of 8 which is 256. So the IP addres
 | 49.37.218.0/1  | 2147483647               | This range is too long. Hence, it is not updated here                                              |
 
 
+### How IP address (IPv6) forms
+
+As you know, IPv4 is 32 bits in size. However, IPv6 is 128 bits in size.  
+
+![aws_47.png](../../assets/aws_47.png)
+
+Hence, all the binary numbers need to be converted into hexadecimal to form an IP address.
+
+![aws_48.png](../../assets/aws_48.png)
+
+So in the above case, the ip address is `2001:0db8:0000:0000:a111:b222:c333:abcd`
+
+There are rules to follow in IPv6.
+
+1. If IP address has `0000:0000`, then it can be written as `::`
+2. If IP address has `0000`, then it can be written as `0`
+
+So the above IP address can be rewritten as `2001:0db8::a111:b222:c333:abcd`.
 
 
+### Stateful Vs Stateless Firewall
+
+Let us assume that client is sending a request to the webserver and web server is responding to the request.
+We need to apply the inbound rule in web server to accept the request from the client machine.
+If a web server is responding the request to the client without opening any outbound rule,
+then it is a stateful firewall.
+
+If a web server is responding the request to the client only if the outbound rule is created,
+then it is a stateless firewall.
+
+
+### Security Group (SG) Vs NACL (Network Access Control List)
+
+Security group and NACL are two different firewall setups.
+NACL is applied in the subnet level whereas SG is applied in the instance level.
+The instances can be part of any subnet.
+SG is a stateful firewall and NACL is a stateless firewall.
+
+| **Security Group**             | **NACL**                                                                                                           |
+|--------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| Applied at the instance level  | Applied at the subnet level (Subnet can have multiple instances and it applies all the instances within the subnet |
+| Support allow rules only       | Support allow and deny rules                                                                                       |
+| Stateful firewall              | Stateless firewall                                                                                                 |
+| Evaluate all rules at one shot | Process the rule in the order and stop if any rule satisfies. After that it will not check subsequent rules        |
 
 
 
