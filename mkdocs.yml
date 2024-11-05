@@ -100,6 +100,7 @@ nav:
 
   - AWS:
       - VPC: "aws/vpc/vpc-intro.md"
+      - Create VPC: "aws/vpc/create-vpc.md"
       - ECS: "aws/ecs/ecs-intro.md"
       - Deploy App: "aws/ecs/deploy-app-in-ecs.md"
   - Ansible:
