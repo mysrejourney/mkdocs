@@ -20,6 +20,8 @@ To create VPC in AWS, there are steps to follow.
 14. Login into EC2 instance created in private subnet and check the internet connectivity. This should connect the internet
 
 
+![aws_111.png](../../assets/aws_111.png)
+
 Let us explore the steps now.
 
 ## 1. Create VPC and assign the CIDR block 
@@ -314,7 +316,7 @@ Connect private EC2 instance from public EC2 instance and check the internet con
 
 ![aws_110.png](../../assets/aws_110.png)
 
-Now the internet is flowing from end use to public EC2 and from public EC2 to private EC2 instance.
+Now the internet is flowing from end user to public EC2 and from public EC2 to private EC2 instance.
 
 
 
