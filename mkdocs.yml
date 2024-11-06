@@ -99,11 +99,13 @@ nav:
       - Chart Hooks: "helm/chart-hooks.md"
 
   - AWS:
-      - VPC: "aws/vpc/vpc-intro.md"
-      - Create VPC: "aws/vpc/create-vpc.md"
-      - VPC Peering: "aws/vpc/vpc-peering.md"
-      - ECS: "aws/ecs/ecs-intro.md"
-      - Deploy App: "aws/ecs/deploy-app-in-ecs.md"
+      - VPC:
+        - Introduction of VPC: "aws/vpc/vpc-intro.md"
+        - Create VPC: "aws/vpc/create-vpc.md"
+        - VPC Peering: "aws/vpc/vpc-peering.md"
+      - ECS:
+        - Introduction of ECS: "aws/ecs/ecs-intro.md"
+        - Deploy an App using ECS: "aws/ecs/deploy-app-in-ecs.md"
   - Ansible:
       - Introduction: "ansible/intro.md"
 
