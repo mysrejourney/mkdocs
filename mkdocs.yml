@@ -63,6 +63,9 @@ nav:
       - CSS Positioning: "css/positioning.md"
       - CSS Display: "css/css-display.md"
 
+  - GIT:
+
+
   - Terraform:
       - Infrastructure As Code: "terraform/iac.md"
       - Introduction: "terraform/intro.md"
@@ -106,6 +109,8 @@ nav:
       - ECS:
         - Introduction of ECS: "aws/ecs/ecs-intro.md"
         - Deploy an App using ECS: "aws/ecs/deploy-app-in-ecs.md"
+      - CloudWatch:
+        - Introduction of CloudWatch: "aws/cw/cw-intro.md"
   - Ansible:
       - Introduction: "ansible/intro.md"
 
@@ -131,6 +136,11 @@ nav:
       - Source IP Algorithm: "haproxy/source-ip.md"
       - HA Proxy Monitoring: "haproxy/monitoring.md"
       - Access Control List: "haproxy/acl.md"
+
+  - Postgres:
+      - Introduction: "postgres/intro.md"
+      - Querying Data: "postgres/select.md"
+      - Exercise: "postgres/exercise.md"
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
