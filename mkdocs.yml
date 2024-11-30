@@ -141,6 +141,7 @@ nav:
   - Postgres:
       - Introduction: "postgres/intro.md"
       - Querying Data: "postgres/select.md"
+      - Filtering Data: "postgres/filter.md"
       - Exercise: "postgres/exercise.md"
 
   - Tips and Tricks:
