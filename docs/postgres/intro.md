@@ -57,23 +57,25 @@ Configuration files such as postgresql.conf, pg_hba.conf, pg_ident.conf are conf
 The `initdb` command runs in the initiation phase and prepares the environment for Postgres DB cluster. This will create
 the following components.
 
-1. Directory creation
+###### 1. Directory creation
 
 `/var/lib/postgresql/data` directory will create automatically if it does not exist. Subdirectories like `base, global, pg_wal,
 pg_stat` also create to organize the datafiles and metadata.
 
-2. Configuration file creation
+###### 2. Configuration file creation
 
 `postgresql.conf` : This is the main configuration file
+
 `ps_hba.conf` : This is for client authentication
+
 `ps_ident.conf`: This helps to map OS users to DB users
 
-3. Creation of system catalog
+###### 3. Creation of system catalog
 
 Core system catalog such as `pg_class, pg_attribute, pg_database` are created to manage the database objects.
 Essential metadata is initialized.
 
-4. Default template setup
+###### 4. Default template setup
 
 There are two default templates (template 0 and template 1). 
 
@@ -82,14 +84,14 @@ There are two default templates (template 0 and template 1).
 | This is pristine template used to create other databases | This is used to create databases by default. If it is broken, template 0 will be used to restore it |
 | You cannot modify template 0 (read only)                 | You can modify as per your need (custom extension, schemas and objects)                             |
 
-5. Default databases
+###### 5. Default databases
 
 `postgres` : A default database created for DBA
 `postgres` : A default user (super user) is created
 `template 0 & template 1` : Refer point # 4
 
 
-6. WAL initialization
+###### 6. WAL initialization
 
 This ensures that the data recovery and durability. Writing Ahead Logging (WAL) is set up under `pg_wal`.
 
@@ -147,9 +149,9 @@ It cannot access any other table, and also it doesn't do anything other than ins
 
 ### Key Points About Roles
 
-1. [ ] No Login by Default: Roles can only log in if the LOGIN attribute is set.
-2. [ ] Inheritance: Roles can inherit permissions from other roles using GRANT. 
-3. [ ] Combining Roles: Users can belong to multiple roles, and their permissions will combine.
+1. **No Login by Default:** Roles can only log in if the LOGIN attribute is set.
+2. **Inheritance:** Roles can inherit permissions from other roles using GRANT. 
+3. **Combining Roles:** Users can belong to multiple roles, and their permissions will combine.
 
 
 **Examples for Roles**

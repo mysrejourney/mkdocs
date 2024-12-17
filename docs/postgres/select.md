@@ -212,7 +212,7 @@ FROM
 SELECT DISTINCT rental_rate FROM film;
 ```
 
-![pg_14.png](../assets/pg_14.png)
+![pg_15.png](../assets/pg_15.png)
 
 
 **2. SELECT DISTINCT on multiple columns**

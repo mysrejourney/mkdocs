@@ -141,6 +141,7 @@ SELECT title, rental_rate FROM film ORDER BY rental_rate ASC OFFSET 5 LIMIT 3;
 **6. Skip the first 5 movies and fetch the next 3 sorted by rental rate in ascending order.**
 
 SELECT title, rental_rate FROM film ORDER BY rental_rate ASC OFFSET 5 FETCH NEXT 3 ROWS ONLY;
+
 ---
 
 **7. Get all movies with a rental duration between 3 and 7 days.**

@@ -13,7 +13,7 @@ SELECT first_name FROM actor WHERE first_name='Tim';
 
 ![pg_16](../assets/pg_16.png)
 
-` If you are using the column aliases, you can't use them in the query.` 
+**If you are using the column aliases, you can't use them in the query.**
 
 ```html
 SELECT first_name AS "First name" FROM actor WHERE 'First name'='Tim'; -> This will throw an error.

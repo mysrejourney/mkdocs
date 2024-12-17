@@ -103,6 +103,8 @@ nav:
       - Chart Hooks: "helm/chart-hooks.md"
 
   - AWS:
+      - IAM:
+        - Introduction of IAM: "aws/iam/intro.md"
       - VPC:
         - Introduction of VPC: "aws/vpc/vpc-intro.md"
         - Create VPC: "aws/vpc/create-vpc.md"
