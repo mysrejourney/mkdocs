@@ -105,6 +105,8 @@ nav:
   - AWS:
       - IAM:
         - Introduction of IAM: "aws/iam/intro.md"
+      - EC2:
+        - Introduction of EC2: "aws/ec2/intro.md"
       - VPC:
         - Introduction of VPC: "aws/vpc/vpc-intro.md"
         - Create VPC: "aws/vpc/create-vpc.md"
@@ -144,6 +146,7 @@ nav:
       - Introduction: "postgres/intro.md"
       - Querying Data: "postgres/select.md"
       - Filtering Data: "postgres/filter.md"
+      - ACID: "postgres/acid.md"
       - Exercise: "postgres/exercise.md"
 
   - Tips and Tricks:
