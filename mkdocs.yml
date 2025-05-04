@@ -68,6 +68,7 @@ nav:
 
 
   - Terraform:
+      - Challenges in Traditional IT: "terraform/traditional-it.md"
       - Infrastructure As Code: "terraform/iac.md"
       - Introduction: "terraform/intro.md"
       - HCL: "terraform/commands.md"

@@ -40,13 +40,13 @@ It can also import other resources outside of Terraform and manages them.
 
 HCL consists of <mark>blocks and arguments.</mark>
 ```doctest
-<BLOCK> {
+<BLOCK> <PARAMETERS> {
     <ARGUMENTS>
 }
 ```
 <mark>Arguments will be in key value format and represents configuration data.</mark>
 ```doctest
-<BLOCK> {
+<BLOCK> <PARAMETERS>{
     <KEY1>=<VALUE1>
     <KEY2>=<VALUE2>
 }
@@ -79,11 +79,12 @@ Type of the block is `resource` which is identified by keyword `resource` in the
 
 `local_file` => `local` is provider + `file` is type of resource
 
-`local_file` =>  Resource type we want to create. This is fixed value and will be changed based on the provider.
+`local_file` => Resource type we want to create. This is a fixed value and will be changed based on the provider.
 
 `names` => Resource name. It can be anything.
 
-As it is file type of resource and needs to be a local type provider, `filename` is the mandatory argument. Refer this <a href="https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file">link</a>
+As it is file type of resource and needs to be a local type provider, `filename` is the mandatory argument. 
+Refer this <a href="https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file">link</a>
 
 ![terraform_local_file.png](../assets/terraform_local_file.png)
 
@@ -92,7 +93,8 @@ To do so, we need to initialize the project using `terraform init` command
 
 ![terraform_init_file.png](../assets/terraform_init_file.png)
 
-Next, we need to ensure if whatever resource needs to be created, will it be there. To check this, you need to run `terraform plan` command
+Next, we need to ensure if whatever resource needs to be created, it will be there.
+To check this, you need to run `terraform plan` command
 
 ![terraform_plan_file.png](../assets/terraform_plan_file.png)
 

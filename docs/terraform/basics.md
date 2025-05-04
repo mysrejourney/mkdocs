@@ -6,39 +6,58 @@ terraform downloads the plugin and install them for the providers mentioned (AWS
 Terraform plugins are available in Hashicorp registry <a href="https://registry.terraform.io/"> https://registry.terraform.io </a> for all the providers.
 There are three different providers.
 <ol>
-<li> Official Providers : Owned and maintained <mark>by Hashicorp</mark></li>
-<li>Partner Providers : Owned and maintained <mark>by third party company</mark> that has partner provider access with Hashicorp</li>
-<li>Community Providers : Published and maintained <mark>by individual contributors </mark>of Hashicorp community</li>
+<li>**Official Providers**: Owned and maintained <mark>by Hashicorp</mark></li> 
+**Example**: AWS, Azure, GCP and Local providers
+<li>**Partner Providers**: Owned and maintained <mark>by third party company</mark> 
+that has partner provider access with Hashicorp</li>
+**Example**: Heroku, F5, Digital Ocean
+<li>**Community Providers**: Published and maintained <mark>by individual contributors </mark>of Hashicorp community</li>
+**Example**: NetappGCP, Active Directory
 </ol>
-All plugins are downloaded into `<working directory>/.terraform` directory. When we download the plugins (during <mark>`terraform init`</mark> command), this will tell you
-<mark>where the plugins are from.</mark>
+
+When we run the command `terraform init`, it will show the version of the plugin is installed.
+
+![terraform_2.png](../assets/terraform_2.png)
+
+In the above snapshot, `hashicorp/local` is known as source address.
+This is used to identify the provider.
+After identifying the provider, it will download the plugins from the provider and install it. 
+
+terraform init command is a safe command,
+and it can be run as many times needed without impacting the actual infrastructure.
+
+All plugins are downloaded into `<working directory>/.terraform` directory.
+When we download the plugins 
+(during <mark>`terraform init`</mark> command), this will tell you <mark>where the plugins are from</mark>.
 
 `<Hostname>/<Organisation namespace>/<Provider name>`
 
 Whereas,
 
-_Hostname_ is optional. If it is not mentioned, then it is <mark>default value (registry.terraform.io)</mark>
+**_Hostname_** is the name of the registry where the plugin is located, and it is optional. 
+If it is not mentioned, then it is <mark>default value (registry.terraform.io)</mark>
 
-_Organisation namespace_ is Hashicorp/Partner Provider/Community Provider
+**_Organisation namespace_** is Hashicorp/Partner Provider/Community Provider
 
-_Provider name_ is AWS/Azure/GCP/Local etc.,
+**_Provider name_** is AWS/Azure/GCP/Local etc.,
 
 **Configuration Directory**
 
-Terraform considers the file with `.tf` extension is configuration file. A single configuration file can have any number of configuration details.
-Also, we can have any number of configuration files as well in a directory. There are few other common configuration files created in a directory.
+Terraform considers the file with `.tf` extension is a configuration file. 
+A single configuration file can have any number of configuration details
+(Like main.tf has multiple resource configurations).
+
+Also, we can have any number of configuration files as well in a directory (Like cat.tf, dog.tf and main.tf). 
+There are few other common configuration files created in a directory.
 
 | Filename     | Purpose                        |
 |:-------------|:-------------------------------|
 | main.tf      | main configuration file        |
 | variables.tf | Contains variable declaration  |
 | outputs.tf   | Contains output from resources |
-| provider.tf  | Contains provider definitions  |
+| providers.tf | Contains provider definitions  |
 
 
-`NOTE: Let us assume that there are two configurations defined in the configuration file. Both have different plugins and one of the plugin is already installed and other one is not yet installed
-In that case, if you run terraform plan / terraform apply command will yield an error. This is because whenever we add a resource for a provider that has not been used so far in the configuration directory, 
-we have to initialize the directory by running terraform init command.`
 
 **Multiple Providers**
 
@@ -49,11 +68,21 @@ You can create a configuration file which contains multiple providers like below
 ![multi_providers_file_result.png](../assets/multi_providers_file_result.png)
 
 
+```
+NOTE: Let us assume that there are two configurations defined in the configuration file. 
+Both have different plugins and one of the plugin is already installed and other one is not yet installed 
+(Meaning terraform init command has executed for only one plugin)
+In that case, if you run terraform plan / terraform apply command will yield an error. 
+This is because whenever we add a resource for a provider that has not been used so far in the configuration directory, 
+we have to initialize the directory by running terraform init command.
+```
+
 **Input Variables**
 
-For re-usability purpose, we can use variables. To do so, we can create variable.tf file and update all variables in it.
+For re-usability, we can use variables.
+To do so, we can create a variable.tf file and update all variables in it.
 <mark>In general, whatever arguments we are passing in block, we can use variable for those arguments.
-Remember, both variable configuration file and your main configuration file should be in same directory.</mark>
+Remember, both variable configuration file and your main configuration file should be in the same directory.</mark>
 
 
 ***Syntax***
