@@ -184,6 +184,7 @@ variable "filename" {
 
 We can create three files using `for_each` meta argument as well.
 However, <mark> `for_each` is expecting a set or map type in the variable configuration file.
+It will not work with list type variable.
 </mark>
 Hence, a variable file needs to be updated like below
 
@@ -223,6 +224,53 @@ We can do the same as below as well.
 
 As seen in the snapshot, there are three files have been created.
 
+
+**Version Constraints**
+
+This will be helpful to use the specific version of the specific provider.
+
+When you run `terraform init` command,
+this will automatically download the latest version of the provider plugin that are needed for the configuration file.
+Sometimes, the functionality of the provider plugin will vary between the versions.
+In that case, we need to download a specific provider plugin to create the resources using a terraform configuration file.
+
+For example, the local_file resource provider latest version (at the time of writing) is 2.5.3.
+
+![terraform_9.png](../assets/terraform_9.png)
+
+In case, if we want to use the local_file resource provider version 2.5.0, we need to use the below code snippet
+
+```html
+terraform {
+  required_providers {
+    local = {
+      source = "hashicorp/local"
+      version = "2.5.0" ## Specific version to be mentioned here
+    }
+  }
+}
+
+```
+
+**Example**
+
+![terraform_10.png](../assets/terraform_10.png)
+
+![terraform_11.png](../assets/terraform_11.png)
+
+![terraform_12.png](../assets/terraform_12.png)
+
+We can use the version value in different ways.
+
+
+| **Value**                         | **Description**                                                                                   |
+|-----------------------------------|---------------------------------------------------------------------------------------------------|
+| version="!=2.5.0"                 | Any version other than 2.5.0 would be okay to download                                            |
+| version="<2.5.0"                  | Any version greater than 2.5.0 would be okay to download                                          |                                                        |
+| version=">2.5.0"                  | Any version less than 2.5.0 would be okay to download                                             |                                                          |
+| version="!=2.5.0, >2.4.1, <2.5.2" | Any version other than 2.5.0 and greater than 2.4.1 and less than 2.5.2 would be okay to download |                                                          |
+| version="~>2.4"                   | Any version from 2.4, 2.5, 2.6 etc would be okay to download                                      |
+| version="~>2.4.0"                 | Any version from 2.4.0, to 2.4.9 etc would be okay to download                                    |                                                                                                   |
 
 
 
