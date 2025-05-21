@@ -1,13 +1,11 @@
-#Work with Terraform
+# Lifecycle Rules
 
-**Lifecycle Rules**
-
-By default, Terraform first destroy the resources first and then will create a new resource.
+By default, Terraform first destroys the resources first, and then will create a new resource.
 
 **Example**
 
-You have local file creating configuration file your directory and the resource was provided already.
-Now, you want to make a changes in the content of the file like below
+You have local file creating configuration file your directory, and the resource was provided already.
+Now, you want to make changes in the content of the file like below
 ```main.tf
 resource "local_file" "my-file" {
     filename="./test.txt"
@@ -15,13 +13,13 @@ resource "local_file" "my-file" {
 }
 ```
 
-When you run `terraform apply` command. it destroys the existing file first, and then it will create new one.
+When you run `terraform apply` command. It destroys the existing file first, and then it will create a new one.
 
 ![terraform_default.png](../assets/terraform_default.png)
 
 ***Create first and Destroy then***
 
-If you want to change this behaviour, you can use lifecycle rules.
+If you want to change this behavior, you can use lifecycle rules.
 
 ```main.tf
 resource "local_file" "my-file" {
@@ -39,7 +37,8 @@ resource "local_file" "my-file" {
 ***Do not destroy***
 
 If you DO NOT want to destroy any resource, then you need to use the below lifecycle rules.
-This will be used when you deal with database. Most of the time, we DO NOT want to delete database while changing something. 
+This will be used when you deal with a database.
+Most of the time, we DO NOT want to delete a database while changing something. 
 So, you need to update lifecycle rule with `prevent_destroy = true`.
 
 ```main.tf
@@ -70,7 +69,7 @@ resource "local_file" "my-file" {
     content="Satheesh Pandian Jeganthan" // earlier it is "I am SRE in Bangalore"
     
     lifecycle {
-        ignore_changes = [content] // you can any number of attribute in the list
+        ignore_changes = [content] // you can add any number of attribute in the list
     }
 }
 ```
@@ -84,12 +83,13 @@ resource "local_file" "my-file" {
 
 ![terraform_lifecycle_rules.png](../assets/terraform_lifecycle_rules.png)
 
-<mark>It is better NOT to use `create_before_destroy = true` lifecycle rule for local file 
+<mark>It is better NOT to use `create_before_destroy = true` lifecycle rule for a local file 
 because the rule will create the local file first and the same file to be destroyed during the recreate operation.</mark>
 
 **Data Sources**
 
-If you want to read the data from any file which are in your current configuration directory, but not created/maintained by terraform.
+If you want to read the data from any file that is in your current configuration directory,
+but not created/maintained by terraform.
 In that case, you can use that file as a data resource.
 
 ```
@@ -116,7 +116,7 @@ data "local_file" "my-data" {
 
 ![terraform_datasources.png](../assets/terraform_datasources.png)
 
-`Remember, you CAN NOT do create/update/destroy for data sources. You can ONLY do read the data source`
+<mark>Remember, you CANNOT do create/update/destroy for data sources. You can ONLY read the data source</mark>
 
 **Meta Argument - Count**
 
@@ -135,7 +135,8 @@ is not unique. Hence, terraform is recreated the same file again and again.
 
 ![terraform_count_ls.png](../assets/terraform_count_ls.png)
 
-Hence, we need to create three different file. Here, I used variable configuration file for creating three files and modified
+Hence, we need to create three different files.
+Here, I used a variable configuration file for creating three files and modified
 configuration file to read the filename from variable configuration.
 ```
 variable filename {
@@ -154,8 +155,9 @@ resource "local_file" "my-file" {
 
 ![terraform_count_number_3_output.png](../assets/terraform_count_number_3_output.png)
 
-In the above example, even if you have 100 arguments in variable configuration file, this will ALWAYS create 3 files as 
-we hardcoded `count = 3`. To create the number of files defined in variable configuration file, we need to update the main
+In the above example, even if you have 100 arguments in a variable configuration file,
+this will ALWAYS create three files as we hardcoded `count = 3`.
+To create the number of files defined in a variable configuration file, we need to update the main
 configuration file to pick the length of the list variable.
 
 ```
@@ -164,3 +166,64 @@ resource "local_file" "my-file" {
     content = "Satheesh"
     count = length(var.filename)
 ```
+
+**For - Each**
+
+``` main.tf
+resource "local_file" "my-file" {
+    filename = each.value
+    for_each = var.filename
+    content=""
+```
+
+``` variable.tf
+variable "filename" {
+    default = ["./test.txt","sample.txt","goal.txt"]
+}
+```
+
+We can create three files using `for_each` meta argument as well.
+However, <mark> `for_each` is expecting a set or map type in the variable configuration file.
+</mark>
+Hence, a variable file needs to be updated like below
+
+``` variable.tf
+variable "filename" {
+    type=set(string) # should be added to convert the list type to set type
+    default = ["./test.txt","sample.txt","goal.txt"]
+}
+```
+
+or 
+
+``` main.tf
+resource "local_file" "my-file" {
+    filename = each.value
+    for_each = toset(var.filename)
+    content=""
+```
+
+![terraform_3.png](../assets/terraform_3.png)
+
+![terraform_4.png](../assets/terraform_4.png)
+
+![terraform_5.png](../assets/terraform_5.png)
+
+![terraform_6.png](../assets/terraform_6.png)
+
+As seen in the snapshot, there are three files have been created.
+
+We can do the same as below as well.
+
+![terraform_7.png](../assets/terraform_7.png)
+
+![terraform_8.png](../assets/terraform_8.png)
+
+![terraform_6.png](../assets/terraform_6.png)
+
+As seen in the snapshot, there are three files have been created.
+
+
+
+
+

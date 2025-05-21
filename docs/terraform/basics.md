@@ -366,12 +366,18 @@ content="This is Satheesh"
 
 **Variable Definition Precedence**
 
-Highest priority to lowest is as follows:
-   1. command line arguments (Ex : `-var "filename=./test.txt"`)
-   2. *.auto.tfvars or *.auto.tfvars.json (* -> can be anything. If there are more than one file, then it will be applicable by alphabetical order)
-   3. terraform.tfvars or terraform.tfvars.json
-   4. environmental variables
+The highest priority to lowest is as follows:
 
+
+| Highest Precedence Order | Way of passing variable to terraform script                                                                                                       |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1                        | command line arguments (Ex : `-var "filename=./test.txt"`)                                                                                        |
+| 2                        | *.auto.tfvars or *.auto.tfvars.json (* → can be anything.  <br/>If there is more than one file, then it will be applicable by alphabetical order) |
+| 3                        | terraform.tfvars or terraform.tfvars.json                                                                                                         |
+| 4                        | environmental variables                                                                                                                           |
+
+
+**NOTE:** Environmental variable has the lowest precedence compared to all other options. 
 
 **Resource Attributes**
 
@@ -385,7 +391,7 @@ Here, `local_file` resource depends on `random_pet` resource. So, terraform will
 While destroying, `local_file` will be deleted first and then `random_pet`.
 This will be taken care by terraform itself. <mark>This is known as implicit dependency.</mark>
 
-We can specifically mention the dependency in the configuration file like below. This is called as explicit dependency.
+We can specifically mention the dependency in the configuration file like below. <mark>This is called as explicit dependency.</mark>
 ```html
  resource "local_file" "my-file" {
        filename = "./test.txt"
