@@ -1,6 +1,40 @@
-# Introduction - Apache Kafka
+# Event Streaming
 
-Apache kafka is nothing but a distributed platform and highly scalable for below
+<mark>Event streaming is the continuous flow of data and processing in real time.</mark>
+
+## Event Streaming Architecture - Drawbacks
+
+#### Processed events
+
+<mark>When service A produces an event and sends it to kafka broker for service B to consume it.
+Once service B consumes the event
+and sends back the response to service A. This event is called as processed event</mark>
+
+1. **Tight coupling:** Let us assume one service (service A) depends on another service (service B).If you are making 
+a change in service A, this will impact service B as well.
+   If service A goes down, service B cannot work.
+
+
+2. **Reduced scalability:** You cannot scale the services if the load goes high.
+
+
+3. **Single point of failure:** If service A goes down, service B cannot work. The whole system is unable to perform as expected.
+
+
+4. **No message persistence:** If your data triggered an event and in queue. 
+In case your data lost due to single point of failure, you cannot recover it again.
+   There is no persistent storage.
+
+To avoid these drawbacks, Apache kafka comes into the picture. Kafka solves these problems and gives the below benefits
+
+* **High throughput:** It can process millions of data without losing them in a short span.
+* **Fault tolerance:** It is distributed, and hence there is no single point of failure. Hence, reliable and highly available.
+* **Scalability:** Kafka is highly scalable without any service disruption.
+
+
+## Introduction - Apache Kafka
+
+Apache kafka is nothing but a distributed event streaming platform and highly scalable for below
 
 1. Creating a real-time data streams
 2. Processing a real-time data streams
@@ -21,6 +55,8 @@ bringing your message from kafka server to the recipient is called as "Processin
 </mark>
 
 In the above example, you are the publisher, your recipient is the consumer, and kafka server is a broker.
+
+![kaf_3](../assets/kaf_3.png)
 
 ### Kafka Architecture
 
@@ -59,6 +95,15 @@ as mediator.
 <mark>Producers and Consumers DO NOT interact directly.
 They use kafka server as a broker to exchange the message.</mark> 
 
+##### Role of broker
+
+A System produces an event and sends it to broker.
+System B and system X consume it from the broker.
+In this architecture, the System doesn't be aware who is going to consume the events it is generated.
+At the same time, System B and System X also don't know where the events are coming from.
+
+![kaf_4](../assets/kaf_4.png)
+
 ##### 4. Cluster:
 It is a group of computers acting for common goal. <mark>Each computer instance runs one instance of kafka broker.</mark>
 
@@ -92,3 +137,15 @@ It is nothing but a group of consumers to share the load.
 **NOTE**
 
 <mark>Kafka does NOT allow more than one consumer to read and process the data from the same partition simultaneously.</mark> 
+
+
+### Kafka - Backbone of event driven architecture
+
+Kafka solves the below problems in the event driven architecture.
+
+1. **High Throughput:** Kafka can process millions of events without any message to be left out.
+
+2. **Fault Tolerance:** Kafka's distributed architecture ensures that high availability and reliable. 
+Even one of the systems goes down, kafka ensures that there is no data loss.
+
+3. **Scalability:** Kafka can scale horizontally when the load goes high. It is dynamic in nature.
