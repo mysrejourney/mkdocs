@@ -125,6 +125,8 @@ nav:
 
   - Kafka:
       - Introduction: "kafka/intro.md"
+      - Setup: "kafka/setup.md"
+      - Building Blocks of Kafka: "kafka/building-blocks.md"
 
   - Observability:
       - Introduction: "observability/intro.md"
