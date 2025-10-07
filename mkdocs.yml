@@ -63,10 +63,6 @@ nav:
       - CSS Positioning: "css/positioning.md"
       - CSS Display: "css/css-display.md"
 
-  - GIT:
-      - Introduction: "css/intro.md"
-
-
   - Terraform:
       - Challenges in Traditional IT: "terraform/traditional-it.md"
       - Infrastructure As Code: "terraform/iac.md"
@@ -127,6 +123,8 @@ nav:
       - Introduction: "kafka/intro.md"
       - Setup: "kafka/setup.md"
       - Building Blocks of Kafka: "kafka/building-blocks.md"
+      - Producers: "kafka/producers.md"
+      - Consumers: "kafka/consumers.md"
 
   - Observability:
       - Introduction: "observability/intro.md"
