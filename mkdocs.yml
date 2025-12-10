@@ -125,6 +125,7 @@ nav:
       - Building Blocks of Kafka: "kafka/building-blocks.md"
       - Producers: "kafka/producers.md"
       - Consumers: "kafka/consumers.md"
+#      - Zookeeper: "kafka/zookeeper.md"
 
   - Observability:
       - Introduction: "observability/intro.md"
@@ -152,6 +153,12 @@ nav:
       - Filtering Data: "postgres/filter.md"
       - ACID: "postgres/acid.md"
       - Exercise: "postgres/exercise.md"
+
+  - Coding:
+      - SQL: "coding/sql.md"
+      - MongoDB : "coding/mongodb.md"
+      - Python : "coding/python.md"
+
 
   - Tips and Tricks:
       - Shell: "tips/shell-script.md"
