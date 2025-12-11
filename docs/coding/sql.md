@@ -43,6 +43,8 @@ Products table:
 | 3          |
 
 
+### Solution  # 1
+
 ```SQL
 SELECT product_id 
 FROM Products 
@@ -55,3 +57,65 @@ recyclable ='Y'
 
 **Explanation:** 
 Only products 1 and 3 are both low fat and recyclable.
+
+
+
+
+### Exercise # 2
+
+Table: Customer
+
+| column     | Data type |
+|------------|-----------|
+| id         | int       |
+| name       | string    |
+| referee_id | int       |
+
+
+In table, id is the primary key column for this table.
+Each document of this collection indicates the id of a customer,
+their name, and the id of the customer who referred them.
+ 
+
+Find the names of the customer that are either:
+
+1. referred by any customer with id != 2.
+2. not referred by any customer.
+
+Return the result in any order.
+
+The result format is in the following example.
+
+**Input:** 
+
+Table: Customer
+
+| id | name | referee_id |
+|----|------|------------|
+| 1  | Will | null       |
+| 2  | Jane | null       |
+| 3  | Alex | 2          |
+| 4  | Bill | null       |
+| 5  | Zack | 1          |
+| 6  | Mark | 2          |
+
+
+Output:
+
+| name |
+|------|
+| Will |
+| Jane |
+| Bill |
+| Zack |
+
+### Solution  # 2
+
+
+```SQL
+SELECT name 
+FROM Customer
+WHERE referee_id != 2
+OR
+referee_id is null
+```

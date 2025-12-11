@@ -20,7 +20,7 @@ Write a solution to find the ids of products that are both low fat and recyclabl
 Return the result table in any order.
 The result format is in the following example.
 
-Example 1:
+**Example 1:**
 
 **Input:** 
 Products collection:
@@ -42,6 +42,8 @@ Products collection:
 | 3          |
 
 
+### Solution  # 1
+
 ```MongoDB
 db.practice.find({low_fats: 'Y', recyclable: 'Y'},{_id:0, product_id: 1}).sort({product_id: 1})
 ```
@@ -50,3 +52,60 @@ db.practice.find({low_fats: 'Y', recyclable: 'Y'},{_id:0, product_id: 1}).sort({
 
 **Explanation:** 
 Only products 1 and 3 are both low fat and recyclable.
+
+
+### Exercise # 2
+
+Collections: Customer
+
+| Field      | Data type |
+|------------|-----------|
+| id         | int       |
+| name       | string    |
+| referee_id | int       |
+
+
+In collection, id is the primary key column for this table.
+Each document of this collection indicates the id of a customer,
+their name, and the id of the customer who referred them.
+ 
+
+Find the names of the customer that are either:
+
+1. referred by any customer with id != 2.
+2. not referred by any customer.
+
+Return the result in any order.
+
+The result format is in the following example.
+
+**Input:** 
+
+Collections: Customer
+
+| id | name | referee_id |
+|----|------|------------|
+| 1  | Will | null       |
+| 2  | Jane | null       |
+| 3  | Alex | 2          |
+| 4  | Bill | null       |
+| 5  | Zack | 1          |
+| 6  | Mark | 2          |
+
+
+Output:
+
+| name |
+|------|
+| Will |
+| Jane |
+| Bill |
+| Zack |
+
+### Solution  # 2
+
+```MongoDB
+db.practice.find({$or: [{referee_id: {$ne: 2}},{referee_id: null}]},{_id:0, name: 1})
+```
+
+![mongo_2.png](../assets/mongo_2.png)

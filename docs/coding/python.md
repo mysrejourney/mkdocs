@@ -77,13 +77,17 @@ def count_substring(given_string, given_sub_string):
 	# Loop through
 	for position in range(0, difference + 1): # 0 1 2 3 
 		# Slice the string with length of the substring
-		print(f"{given_string[position : position + (difference - 1)]}")
+		# print(f"{given_string[position : position + (difference - 1)]}")
 		# Compare the slice with substring
 		if (given_string[position : position + (difference - 1)] == given_sub_string): # 
 			number_of_occurrance += 1 # Increase the count
 	
 	return number_of_occurrance # return the count
 
+
+#######################
+# Program starts here
+#######################
 
 if __name__ == "__main__":
 	# Get the strings
@@ -96,9 +100,128 @@ if __name__ == "__main__":
 	# Print the result
 	print(f"Give substring : {given_sub_string} is occurred {count} times in the given string : {given_string}")
 
+#######################
+# Program ends here
+#######################
+
 ```
 
 ![py_sln_1.png](../assets/py_sln_1.png)
 
 
+### Exercise # 2
+
+You are given a string.
+Your task is to find out if the string contains: alphanumeric characters,
+alphabetical characters, digits, lowercase and uppercase characters.
+
+**Input Format**
+
+A single line containing a string.
+
+**Constraints**
+
+```Python
+0 < len(S) < 1000
+```
+
+
+**Output Format**
+
+In the first line, print True if it has any alphanumeric characters.
+Otherwise, print False.
+In the second line, print True if it has any alphabetical characters.
+Otherwise, print False.
+In the third line, print True if it has any digits.
+Otherwise, print False.
+In the fourth line, print True if it has any lowercase characters.
+Otherwise, print False.
+In the fifth line, print True if it has any uppercase characters.
+Otherwise, print False.
+
+**Sample Input**
+
+```Python
+q2A
+```
+
+**Sample Output**
+
+```Python
+True
+True
+True
+True
+True
+```
+
+
+### Solution  # 2
+
+```Python
+#######################################################################################################################################
+# LOGIC: 
+# Use the string built in methods to check if the characters of the string is either alphanumerical, alphabets, digits, lower case and upper case characters
+# If all the charactrs meet any one of the category, then return it as True. 
+
+# TO DO:
+# 1. Get the input string
+# 2. Loop through each character of the string
+# 3. Check if the character is either alphanumerical, alphabets, digits, lower case and upper case characters
+# 4. If so, make the category is True
+# 5. Check if all the category changes to True. If so, return string validation as True. Else, return as False.
+# 6. Return string validation
+
+#######################################################################################################################################
+
+#######################################################################################################################################
+# Function name: check_string_validator
+# Arguments: given_string
+# Return: String validation as boolean value
+# Description : Check if the string has alphanumerical, alphabets, digits, lower case and upper case characters 
+
+#######################################################################################################################################
+
+
+def check_string_validator(given_string):
+  string_validation = False
+  alnum_validation = False
+  alpha_validation = False
+  digit_validation = False
+  lower_validation = False
+  upper_validation = False
+
+  for char in given_string: # Get each character of the string
+    if char.isalnum(): # Check if the character is alphanumerical
+      alnum_validation = True
+    if char.isalpha(): # Check if the character is alphabets
+      alpha_validation = True
+    if char.isdigit(): # Check if the character is digits
+      digit_validation = True
+    if char.islower(): # Check if the character is lower case letter
+      lower_validation = True
+    if char.isupper():# Check if the character is upper case letter 
+      upper_validation = True   
+
+  # Check if all conditions met or not
+  if (alnum_validation == True and alpha_validation == True and digit_validation == True and lower_validation == True and upper_validation == True):
+    string_validation = True
+
+  return string_validation
+
+#######################
+# Program starts here
+#######################
+
+if __name__ == '__main__':
+  given_string = input("Enter your string: ") # Get the input string
+  if check_string_validator(given_string) == True: # validate if it meets the condition
+    print(f"Given string : {given_string} has alpha numerical, alphabetical, numbers, lowercase and uppercase")
+  else:
+    print(f"Given string : {given_string} doesn't meet the criteria")
+
+#######################
+# Program ends here
+#######################
+```
 
