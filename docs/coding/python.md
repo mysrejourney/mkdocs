@@ -282,6 +282,7 @@ HHHHHHHHH
                         H 
 ```
 
+### Solution  # 3
 
 ```Python
 #######################################################################################################################################
@@ -325,6 +326,103 @@ for i in range(thickness+1):
 #Bottom Cone
 for i in range(thickness):
     print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+#######################
+# Program ends here
+#######################
+```
+
+
+
+### Exercise # 4
+
+**Task**
+
+You are given a string and width w.
+Your task is to wrap the string into a paragraph of width w.
+
+**Function Description**
+
+Complete the wrap function in the editor below.
+wrap has the following parameters:
+
+string string: a long string
+int max_width: the width to wrap to
+
+**Returns**
+
+string: a single string with newline characters ('\n') where the breaks should be
+
+**Input Format**
+
+The first line contains a string, string.
+
+The second line contains the width, maxwidth.
+
+**Constraints**
+
+```Python
+0 < len(string) < 1000
+
+0 < max width < len(string)
+```
+
+
+**Sample Input**
+
+```Python
+ABCDEFGHIJKLIMNOQRSTUVWXYZ
+4
+```
+**Sample Output**
+
+```Python
+ABCD
+EFGH
+IJKL
+IMNO
+QRST
+UVWX
+YZ
+```
+
+### Solution  # 4
+
+```Python
+#######################################################################################################################################
+# LOGIC: 
+# 
+# 
+# TO DO:
+# 1. Get the input string and width to use to split the string
+# 2. use the built-in method textwrap.fill to split the string
+# 3. Return the output string
+
+#######################################################################################################################################
+
+#######################
+# Program starts here
+#######################
+
+import textwrap
+
+
+#######################################################################################################################################
+# Function name: wrap
+# Arguments: given_string and the length to be wrapped
+# Return: String 
+# Description : Get the string and splits the string with the number of characters given by the width as an input
+
+#######################################################################################################################################
+
+def wrap(string, max_width):
+    return textwrap.fill(string, max_width) # This will wrap the given string 
+   # return textwrap.wrap(string, max_width) # This will split the string and save it as a list
+
+if __name__ == '__main__':
+    string, max_width = input(), int(input())
+    result = wrap(string, max_width)
+    print(result)
 
 #######################
 # Program ends here
