@@ -225,5 +225,31 @@ Collections: Views
 
 
 ```SQL
-
+db.views.aggregate([
+{
+	$match: {
+		$expr: { 
+			$eq: ["$author_id", "$viewer_id"] 
+		}
+	}
+},
+{
+	$group: {
+		_id: "$viewer_id",
+	}
+},
+{
+	$project: {
+		_id: 0,
+		id: "$_id"
+	}
+},
+{
+	$sort: {
+		id: -1
+	}
+}
+])
 ```
+
+![mongo_4.png](../assets/mongo_4.png)
