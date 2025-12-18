@@ -70,6 +70,7 @@ Each document of this collection indicates the id of a customer,
 their name, and the id of the customer who referred them.
  
 
+#### Question 
 Find the names of the customer that are either:
 
 1. referred by any customer with id != 2.
@@ -109,3 +110,66 @@ db.practice.find({$or: [{referee_id: {$ne: 2}},{referee_id: null}]},{_id:0, name
 ```
 
 ![mongo_2.png](../assets/mongo_2.png)
+
+
+
+
+### Exercise # 3
+
+Table: World
+
+| Column Name | Type    |
+|-------------|---------|
+| name        | varchar |
+| continent   | varchar |
+| area        | int     |
+| population  | int     |
+| gdp         | bigint  |
+
+"name" is the primary key (column with unique values) for this table.
+Each row of this table gives information about the name of a country, 
+the continent to which it belongs, its area, the population, and its GDP value.
+ 
+#### Question 
+
+A country is big if:
+
+1. It has an area of at least three million (i.e., 3,000,000 km2), or
+2. It has a population of at least twenty-five million (i.e., 25,000,000).
+
+Write a solution to find the name, population, and area of the big countries.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+Input: 
+
+Collection: world
+
+| name        | continent | area    | population | gdp          |
+|-------------|-----------|---------|------------|--------------|
+| Afghanistan | Asia      | 652230  | 25500100   | 20343000000  |
+| Albania     | Europe    | 28748   | 2831741    | 12960000000  |
+| Algeria     | Africa    | 2381741 | 37100000   | 188681000000 |
+| Andorra     | Europe    | 468     | 78115      | 3712000000   |
+| Angola      | Africa    | 1246700 | 20609294   | 100990000000 |
+
+
+Output: 
+
+| name        | population | area    |
+|-------------|------------|---------|
+| Afghanistan | 25500100   | 652230  |
+| Algeria     | 37100000   | 2381741 |
+
+
+###  Solution # 3
+
+
+```MongoDB
+db.world.find({$or: [{country: {$gt: 3000000}}, {population: {$gt: 25000000}}]},{name: 1, population: 1, area: 1, _id: 0})
+```
+
+![mongo_3.png](../assets/mongo_3.png)
+

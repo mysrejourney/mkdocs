@@ -225,3 +225,108 @@ if __name__ == '__main__':
 #######################
 ```
 
+### Exercise # 3
+
+**Task**
+
+You are given a partial code that is used for generating the HackerRank Logo of variable thickness.
+Your task is to replace the blank (______) with rjust, ljust or center.
+
+**Input Format**
+
+A single line containing the thickness value for the logo.
+
+**Constraints**
+
+```Python
+0 < thickness < 50
+```
+The thickness must be an odd number.
+
+**Output Format**
+
+Output the desired logo.
+
+**Sample Input**
+
+```Python
+5
+```
+**Sample Output**
+
+```Python
+    H    
+   HHH   
+  HHHHH  
+ HHHHHHH 
+HHHHHHHHH
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHHHHHHHHHHHHHHHHHHHHHH   
+  HHHHHHHHHHHHHHHHHHHHHHHHH   
+  HHHHHHHHHHHHHHHHHHHHHHHHH   
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+                    HHHHHHHHH 
+                     HHHHHHH  
+                      HHHHH   
+                       HHH    
+                        H 
+```
+
+
+```Python
+#######################################################################################################################################
+# LOGIC: 
+# 
+# 
+# TO DO:
+# 1. Get the input number for the pillar thickness
+# 2. Divide the logo into 5 different layers (Top Cone, Top Pillar, Middle Pillar, Lower Pilar, Bottom Cone)
+# 3. Top Cone should loop through till thickness to form the Cone (first line 1 char, 2nd line 3 char and so on)
+# 4. To form top pillar, loop through the thickness and place them in center with the gap. 
+# 5. To form middle pillar, loop through the half of thickness and place them in center without the gap. 
+# 6. To form bottome pillar, loop through the thickness and place them in center with the gap.
+# 7. To form bottom cone, loop through the thickness and do the reverse order (first line 7 char, 2nd line 5 char and so on)
+
+#######################################################################################################################################
+
+#######################
+# Program starts here
+#######################
+
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+#######################
+# Program ends here
+#######################
+```
