@@ -75,11 +75,11 @@ def count_substring(given_string, given_sub_string):
 	difference = length_of_string - length_of_sub_string # 4
 	
 	# Loop through
-	for position in range(0, difference + 1): # 0 1 2 3 
+	for position in range(0, difference + 1): # 0 1 2 3 4
 		# Slice the string with length of the substring
 		# print(f"{given_string[position : position + (difference - 1)]}")
 		# Compare the slice with substring
-		if (given_string[position : position + (difference - 1)] == given_sub_string): # 
+		if (given_string[position : position + (difference - 1)] == given_sub_string): # 0:3 => 012 , 1:4=>123 .. so on
 			number_of_occurrance += 1 # Increase the count
 	
 	return number_of_occurrance # return the count
@@ -225,6 +225,33 @@ if __name__ == '__main__':
 #######################
 ```
 
+![py_sln_2.png](../assets/py_sln_2.png)
+
+### Lessons Learnt
+
+1. char.isalnum()
+```
+This method will check if the character is alphanumerical
+```
+2. char.isalpha()
+```
+This method will check if the character is alphabets
+```
+3. char.isdigit()
+```
+This method will check if the character is digits
+```
+4. char.islower()
+```
+This method will check if the character is lower case letter
+```
+5. char.isupper()
+```
+This method will check if the character is upper case letter
+```
+
+
+
 ### Exercise # 3
 
 **Task**
@@ -332,7 +359,25 @@ for i in range(thickness):
 #######################
 ```
 
+![py_sln_3.png](../assets/py_sln_3.png)
 
+### Lessons Learnt
+
+1. string.center(width)
+```
+This method will place the string in the center. 
+Before and after string, space will be there
+```
+2. string.ljust(width, character)
+```
+This method will place the string in the left. 
+After string, mentioned character will be there
+```
+3. string.rjust(width, character)
+```
+This method will place the string in the right. 
+Before string, mentioned character will be there
+```
 
 ### Exercise # 4
 
@@ -428,3 +473,166 @@ if __name__ == '__main__':
 # Program ends here
 #######################
 ```
+![py_sln_4.png](../assets/py_sln_4.png)
+
+### Lessons Learnt
+
+1. textwrap.fill(string, max_width)
+```
+This method will wrap the given string.
+This will wrap the string with the given max_width
+```
+2. textwrap.fill(string, max_width)
+```
+This method will wrap the given string.
+This will wrap the string as a list of array with the given max_width
+```
+
+### Exercise # 5
+
+**Task**
+
+Mr. Vincent works in a door mat manufacturing company.
+One day, he designed a new door mat with the following specifications:
+1. Mat size must be N x M. (N is an odd natural number, and M is 3 times N.)
+2. The design should have 'WELCOME' written in the center.
+3. The design pattern should only use |, . and - characters.
+
+
+**Sample Designs**
+
+'''
+Size: 7 x 21 
+    ---------.|.---------
+    ------.|..|..|.------
+    ---.|..|..|..|..|.---
+    -------WELCOME-------
+    ---.|..|..|..|..|.---
+    ------.|..|..|.------
+    ---------.|.---------
+'''
+
+**Input Format**
+
+A single line containing the space separated values of N and M.
+
+
+**Constraints**
+
+```Python
+5 < N < 101
+
+15 < M < 303
+```
+
+**Output Format**
+
+Output the design pattern.
+
+**Sample Input**
+
+```Python
+9 27
+```
+**Sample Output**
+
+```Python
+------------.|.------------
+---------.|..|..|.---------
+------.|..|..|..|..|.------
+---.|..|..|..|..|..|..|.---
+----------WELCOME----------
+---.|..|..|..|..|..|..|.---
+------.|..|..|..|..|.------
+---------.|..|..|.---------
+------------.|.------------
+```
+
+### Solution  # 5
+
+```Python
+#######################################################################################################################################
+# LOGIC: 
+# You need to split three different portions
+#         1. Top Portion where design starts from 1 to mid of the height
+#         2. Middle Portion where design prints WELCOME in the center
+#         3. Bottom Portion where design starts from mid of the height to end of the height
+#
+# TO DO:
+# Top Portion
+#         1. Find out the middle of the height (height // 2)
+#         2. Loop through till width (0 to width - 1)
+#         3. Check the loop value is greater than middle of the height. If not, print the design
+#         4. If the loop value is greater than middle of the height. Don't do anything
+#
+# Middle Portion
+#         1. Just print WELCOME design as it is only one row. So we took reminder of the value and print it
+#
+# Bottom Portion
+#         1. Find out the middle of the height (height // 2)
+#         2. Loop through till width (width to 0)
+#         3. Check the loop value is greater than middle of the height. If so, don't do anything
+#         4. If the loop value is greater than middle of the height. If not, print design
+#
+#######################################################################################################################################
+
+#######################
+# Program starts here
+#######################
+
+if __name__ == '__main__':
+    height, width = input().split() # 9 27
+    width = int(width) # 27
+    height = int(height) # 9
+    char ='.|.' # Height character
+    another_char = '_' # Width character
+    welcome_note = 'WELCOME' # Middle portion string
+    
+  ############################################################################################
+  # It should be 4 rows as height (height // 2)
+  # 1st row should have only one '.|.' character. 2nd row should have three '.|.' characters. 
+  # This will increase 2 chracters from there till end of the height // 2.
+  ############################################################################################
+    # top portion
+    for numberOfTimesToPrint in range(width): # 0..26
+      if numberOfTimesToPrint < height//2: # 0 < 4 .. 3 < 4
+        print((char * ((2 * numberOfTimesToPrint) + 1)).center(width, another_char)) 
+    
+    # middle portion
+    for numberOfTimesToPrint in range(height % 2 ):
+        print(("WELCOME").center(width, another_char))
+
+  ############################################################################################
+  # It should be 4 rows as height (height // 2)
+  # 1st row should have (4 * 2) - 1 => 7 '.|.' characters. 2nd row should have five '.|.' characters. 
+  # This will decrease 2 chracters from there till end of the height.
+  ############################################################################################
+    # botom portion
+    for numberOfTimesToPrint in range(width, 0, -1): # 0..26
+      if numberOfTimesToPrint <= height//2: # 4 <= 4 .. 1 <= 4 # 0 will not go as it is excluded in range loop
+        print((char * ((2 * numberOfTimesToPrint) -1)).center(width, another_char))     
+
+
+#######################
+# Program ends here
+#######################
+
+```
+
+![py_sln_5.png](../assets/py_sln_5.png)
+
+### Lessons Learnt
+
+1. string.center(width)
+```
+This method will place the string in the center. 
+Before and after string, space will be there
+```
+2. string.center(width, character)
+```
+This method will place the string in the center. 
+Before and after string, mentioned character will be there
+```
+3. When you run the loop to form design, divide the design into multiple portions
+4. The Top portion is always incremental way in the loop
+5. The Bottom portion is always decremental way in the loop

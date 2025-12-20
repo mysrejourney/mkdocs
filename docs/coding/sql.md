@@ -239,3 +239,54 @@ SELECT DISTINCT AUTHOR_ID AS id
 FROM VIEWS
 WHERE author_id = viewer_id ORDER BY author_id ASC
 ```
+
+### Exercise # 5
+
+Table: Tweets
+
+| Column Name | Type    |
+|-------------|---------|
+| tweet_id    | int     |
+| content     | varchar |
+
+
+Tweet_id is the primary key (column with unique values) for this table.
+Content consists of alphanumeric characters, '!', or ' ' and no other special characters.
+This table contains all the tweets in a social media app.
+
+#### Question 
+
+1. Write a solution to find the IDs of the invalid tweets. The tweet is invalid if the number of characters used in the content of the tweet is strictly greater than 15.
+
+2. Return the result table in any order
+
+The result format is in the following example.
+
+**Input:** 
+
+Table: Tweets
+
+| tweet_id | content                           |
+|----------|-----------------------------------|
+| 1        | Let us Code                       |
+| 2        | More than fifteen chars are here! |
+
+
+
+**Output:** 
+
+| tweet_id |
+|----------|
+| 2        |
+
+
+
+###  Solution # 5
+
+
+```SQL
+SELECT tweet_id 
+FROM TWEETS
+WHERE
+length(content) > 15
+```
