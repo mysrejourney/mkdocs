@@ -323,3 +323,115 @@ db.tweets.aggregate([
 ```
 
 ![mongo_5.png](../assets/mongo_5.png)
+
+
+
+### Exercise # 6 - Replace Employee ID With The Unique Identifier
+
+Collection: Employees
+
+| Column Name | Type    |
+|-------------|---------|
+| id          | int     |
+| name        | varchar |
+
+
+id is the primary key (column with unique values) for this collection.
+Each row of this collection contains the id and the name of an employee in a company.
+
+
+
+Collection: EmployeesUNI
+
+| Column Name | Type |
+|-------------|------|
+| id          | int  |
+| unique_id   | int  |
+
+(id, unique_id) is the primary key (combination of columns with unique values) for this collection.
+Each row of this collection contains the id and the corresponding unique id of an employee in the company.
+
+#### Question 
+
+1. Write a solution to show the unique ID of each user, If a user does not have a unique ID replace just show null.
+
+2. Return the result collection in any order
+
+The result format is in the following example.
+
+**Input:** 
+
+Collection: Employees
+
+| id | name     |
+|----|----------|
+| 1  | Alice    |
+| 7  | Bob      |
+| 11 | Meir     |
+| 90 | Winston  |
+| 3  | Jonathan |
+
+Collection: EmployeesUNI
+
+| id | unique_id |
+|----|-----------|
+| 3  | 1         |
+| 11 | 2         |
+| 90 | 3         |
+
+**Output:** 
+
+| unique_id | name     |
+|-----------|----------|
+| null      | Alice    |
+| null      | Bob      |
+| 2         | Meir     |
+| 3         | Winston  |
+| 1         | Jonathan |
+
+
+###  Solution # 6
+
+
+```MongoDB
+db.employees.aggregate([
+{
+	$lookup: {
+		from: "employeesUni",
+		localField: "id",
+		foreignField: "id",
+		 as: "matchedData"
+	}
+},
+{
+	$unwind: {
+		path: "$matchedData",
+		preserveNullAndEmptyArrays: true
+	}
+},
+ {
+    $unset: "matchedData._id"
+ },
+{
+	$project: {
+		_id: 0,
+		unique_id: {
+			$ifNull: ["$matchedData", "null"]
+		},
+		name: 1
+	}
+},
+])
+```
+
+![mongo_6.png](../assets/mongo_6.png)
+
+
+### Lesson Learnt
+
+1. $lookup ALWAYS returns an array, even if there is only one match. That’s why $unwind is needed.
+2. $unwind will produce multiple output documents (one per match).
+3. You DON’T need $unwind when
+   * You want the joined data as an array
+   * You don’t need to access individual fields.
+   * You don’t care about NULL handling

@@ -636,3 +636,113 @@ Before and after string, mentioned character will be there
 3. When you run the loop to form design, divide the design into multiple portions
 4. The Top portion is always incremental way in the loop
 5. The Bottom portion is always decremental way in the loop
+
+
+
+### Exercise # 6
+
+Given an integer, print the following values for each integer i from 1 to n:
+
+1. Decimal
+2. Octal
+3. Hexadecimal (capitalized)
+4. Binary
+
+**Function Description**
+
+Complete the print_formatted function in the editor below.
+
+print_formatted has the following parameters:
+
+int number: the maximum value to print
+Prints
+
+The four values must be printed on a single line in the order specified above for each i from 1 to number. 
+Each value should be space-padded to match the width of the binary value of number,
+and the values should be separated by a single space.
+
+**Input Format**
+
+A single integer denoting n.
+
+**Constraints**
+
+1 <= n <= 99
+
+**Sample Input**
+
+```Python
+17
+```
+**Sample Output**
+
+```Python
+    1     1     1     1
+    2     2     2    10
+    3     3     3    11
+    4     4     4   100
+    5     5     5   101
+    6     6     6   110
+    7     7     7   111
+    8    10     8  1000
+    9    11     9  1001
+   10    12     A  1010
+   11    13     B  1011
+   12    14     C  1100
+   13    15     D  1101
+   14    16     E  1110
+   15    17     F  1111
+   16    20    10 10000
+   17    21    11 10001
+```
+
+### Solution  # 6
+
+```Python
+#######################################################################################################################################
+# LOGIC: 
+# 1. Get the binary format length
+# 2. Loop through till the given number
+# 3. Format each number in the required format
+#
+#######################################################################################################################################
+
+
+#######################################################################################################################################
+# Function name: print_formatted
+# Arguments: number
+# Return: string
+# Description : Get the number and loop through the until the number and print each number < given number in different formats
+
+#######################################################################################################################################
+
+def print_formatted(number):
+    binary_number = f"{number:b}"
+    width_of_binary_number = len(binary_number)
+
+    for num in range(1, number + 1):
+        result = f"{num:d}".rjust(width) + " " + f"{num:o}".rjust(width) + " " + f"{num:X}".rjust(width) + " " + f"{num:b}".rjust(width) + " "
+        print(result)
+        
+#######################
+# Program starts here
+#######################
+
+if __name__ == '__main__':
+  given_input = int(input())
+  print_formatted(given_input)
+
+#######################
+# Program ends here
+#######################
+
+```
+
+![py_sln_6.png](../assets/py_sln_6.png)
+
+### Lessons Learnt
+
+1. To convert the number in to decimal format ⇒ number:d
+2. To convert the number in to octal format ⇒ number:o
+3. To convert the number in to hexa format ⇒ number:x. For capital hexa format ⇒ number:X
+4. To convert the number in to binary format ⇒ number:b

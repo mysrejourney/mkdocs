@@ -290,3 +290,88 @@ FROM TWEETS
 WHERE
 length(content) > 15
 ```
+
+### Exercise # 6 - Replace Employee ID With The Unique Identifier
+
+Table: Employees
+
+| Column Name | Type    |
+|-------------|---------|
+| id          | int     |
+| name        | varchar |
+
+
+id is the primary key (column with unique values) for this table.
+Each row of this table contains the id and the name of an employee in a company.
+
+
+
+Table: EmployeesUNI
+
+| Column Name | Type |
+|-------------|------|
+| id          | int  |
+| unique_id   | int  |
+
+(id, unique_id) is the primary key (combination of columns with unique values) for this table.
+Each row of this table contains the id and the corresponding unique id of an employee in the company.
+
+#### Question 
+
+1. Write a solution to show the unique ID of each user, If a user does not have a unique ID replace just show null.
+
+2. Return the result table in any order
+
+The result format is in the following example.
+
+**Input:** 
+
+Table: Employees
+
+| id | name     |
+|----|----------|
+| 1  | Alice    |
+| 7  | Bob      |
+| 11 | Meir     |
+| 90 | Winston  |
+| 3  | Jonathan |
+
+Table: EmployeesUNI
+
+| id | unique_id |
+|----|-----------|
+| 3  | 1         |
+| 11 | 2         |
+| 90 | 3         |
+
+**Output:** 
+
+| unique_id | name     |
+|-----------|----------|
+| null      | Alice    |
+| null      | Bob      |
+| 2         | Meir     |
+| 3         | Winston  |
+| 1         | Jonathan |
+
+
+###  Solution # 6
+
+
+```SQL
+SELECT EmployeeUNI.unique_id, Employees.name
+FROM Employees
+LEFT JOIN EmployeeUNI
+ON Employees.id = EmployeeUNI.id
+ORDER BY UNIQUE_ID DESC
+```
+
+### Lesson Learnt
+
+When you want all records of one table, you need to use JOIN.
+In this case, we are using LEFT JOIN.
+Here we are filtering the rows based upon the condition where LEFT JOIN ensures all rows from Employees are included,
+even if there’s no matching record.
+For employees with no entry in EmployeeUNI,
+the unique_id column will show NULL.
+For those with a matching EmployeeUNI, you get their unique_id.
