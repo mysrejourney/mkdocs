@@ -375,3 +375,187 @@ even if there’s no matching record.
 For employees with no entry in EmployeeUNI,
 the unique_id column will show NULL.
 For those with a matching EmployeeUNI, you get their unique_id.
+
+
+
+
+### Exercise # 7 - Product Sales Analysis I
+
+Table: sales
+
+| Column Name | Type |
+|-------------|------|
+| sale_id     | int  |
+| product_id  | int  |
+| year        | int  |
+| quantity    | int  |
+| price       | int  |
+
+
+(sale_id, year) is the primary key (combination of columns with unique values) of this table.
+product_id is a foreign key (reference column) to Product table.
+Each row of this collection shows a sale on the product product_id in a certain year.
+Note that the price is per unit.
+
+
+
+Table: product
+
+| Column Name  | Type    |
+|--------------|---------|
+| product_id   | int     |
+| product_name | varchar |
+
+product_id is the primary key (column with unique values) of this table.
+Each row of this table indicates the product name of each product.
+
+#### Question 
+
+1. Write a solution to report the product_name, year, and price for each sale_id in the Sales table.
+
+2. Return the result collection in any order
+
+The result format is in the following example.
+
+**Input:** 
+
+Table: sales
+
+| sale_id | product_id | year | quantity | price |
+|---------|------------|------|----------|-------|
+| 1       | 100        | 2008 | 10       | 5000  |
+| 2       | 100        | 2009 | 12       | 5000  |
+| 7       | 200        | 2011 | 15       | 9000  |
+
+Table: product
+
+| product_id | product_name |
+|------------|--------------|
+| 100        | Nokia        |
+| 200        | Apple        |
+| 300        | Samsung      |
+
+**Output:** 
+
+| product_name | name | year |
+|--------------|------|------|
+| Nokia        | 2008 | 5000 |
+| Nokia        | 2009 | 5000 |
+| Apple        | 2011 | 9000 |
+
+
+###  Solution # 7
+
+
+```SQL
+SELECT Product.product_name, Sales.year,Sales.Price
+FROM Sales
+LEFT JOIN Product
+ON Sales.product_id = Product.product_id
+```
+
+### Lesson Learnt
+
+Here we are filtering the rows based on 'INNER JOIN.' 
+Inner join will keep the rows of both tables only if the condition is satisfied.
+
+
+### Exercise # 8 - Customer Who Visited but Did Not Make Any Transactions
+
+Table: Visits
+
+| Column Name | Type |
+|-------------|------|
+| visit_id    | int  |
+| customer_id | int  |
+
+
+visit_id is the column with unique values for this table.
+This table contains information about the customers who visited the mall.
+
+
+Table: Transactions
+
+| Column Name    | Type |
+|----------------|------|
+| transaction_id | int  |
+| visit_id       | int  |
+| amount         | int  |
+
+transaction_id is a column with unique values for this table.
+This table contains information about the transactions made during the visit_id.
+
+
+#### Question 
+
+1. Write a solution to find the IDs of the users who visited without making any transactions,
+and the number of times they made these types of visits.
+
+2. Return the result collection in any order
+
+The result format is in the following example.
+
+**Input:** 
+
+Table: Visits
+
+| visit_id | customer_id |
+|----------|-------------|
+| 1        | 23          |
+| 2        | 9           |
+| 4        | 30          |
+| 5        | 54          |
+| 6        | 96          |
+| 7        | 54          |
+| 8        | 54          |
+
+Table: Transactions
+
+| transaction_id | visit_id | amount |
+|----------------|----------|--------|
+| 2              | 5        | 310    |
+| 3              | 5        | 300    |
+| 9              | 5        | 200    |
+| 12             | 1        | 910    |
+| 13             | 2        | 970    |
+
+**Output:** 
+
+| customer_id | count_no_trans |
+|-------------|----------------|
+| 54          | 2              |
+| 30          | 1              |
+| 96          | 1              |
+
+**Explanation:** 
+
+Customer with id = 23 visited the mall once and made one transaction during the visit with id = 12.
+Customer with id = 9 visited the mall once and made one transaction during the visit with id = 13.
+Customer with id = 30 visited the mall once and did not make any transactions.
+Customers with id = 54 visited the mall three times.During 2 visits they did not make any transactions, 
+and during one visit they made 3 transactions.
+Customer with id = 96 visited the mall once and did not make any transactions.
+As we can see, users with IDs 30 and 96 visited the mall one time without making any transactions. 
+Also, user 54 visited the mall twice and did not make any transactions.
+
+###  Solution # 8
+
+
+```SQL
+SELECT  v.customer_id, COUNT(v.customer_id) as count_no_trans
+FROM Visits v
+LEFT JOIN Transactions t
+ON v.visit_id = t.visit_id
+WHERE t.transaction_id IS NULL
+GROUP BY v.customer_id
+```
+
+![sql_8.png](../assets/sql_8.png)
+
+### Lesson Learnt
+
+Here we are filtering the rows based on 'LEFT JOIN.'
+This will merge both tables and keep all records in table 1, and for table 2,
+it will keep the records if the value matches and the rest of the column shows as "NULL."
+
+

@@ -746,3 +746,82 @@ if __name__ == '__main__':
 2. To convert the number in to octal format ⇒ number:o
 3. To convert the number in to hexa format ⇒ number:x. For capital hexa format ⇒ number:X
 4. To convert the number in to binary format ⇒ number:b
+
+
+
+ 
+### Exercise # 7: Find the Runner-Up Score!
+
+Given the participants' score sheet for your University Sports Day, you are required to find the runner-up score. 
+You are given scores.Store them in a list and find the score of the runner-up.
+
+**Input Format**
+
+The first line contains n. The second line contains an array A[] of n integers each separated by a space.
+
+
+**Constraints**
+
+2 <= n <= 10
+
+-100 <= A[i] <= 100
+
+**Output Format**
+
+Print the runner-up score.
+
+**Sample Input**
+
+```Python
+5
+2 3 6 6 5
+```
+**Sample Output**
+
+```Python
+5
+```
+
+### Solution  # 7
+
+```Python
+#######################################################################################################################################
+# LOGIC: 
+# 1. Get the input numbers
+# 2. Convert them into a list
+# 3. Sort the list
+# 4. Loop through from last number to first number of the list.
+# 5. Compare first two values and if it is not equal, then second last number is the runner up. Else, continue the loop
+#
+#######################################################################################################################################
+        
+#######################
+# Program starts here
+#######################
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    arr = list(arr)
+    sorted_list = sorted(arr)
+    for num in range((len(sorted_list) - 1), -1, -1):
+        if sorted_list[num] != sorted_list[num - 1]:
+            print(sorted_list[num - 1])
+            break
+
+#######################
+# Program ends here
+#######################
+
+```
+
+![py_sln_7.png](../assets/py_sln_7.png)
+
+### Lessons Learnt
+
+1. map function is used to read multiple numbers from one line.
+2. input().split() ⇒ Splits the string by spaces
+3. sorted(list) ⇒ Sorts the array in ascending order
+4. sorted (list, reverse=True)⇒ Sorts the array in descending order
+
+
