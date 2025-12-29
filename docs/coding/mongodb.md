@@ -687,3 +687,96 @@ db.visits.aggregate([
 2. _id should be used while projecting the values.
 
 
+
+
+### Exercise # 9 - Rising Temperature
+
+Collection: Weather
+
+| Column Name | Type |
+|-------------|------|
+| id          | int  |
+| recordDate  | date |
+| temperature | int  |
+
+
+id is the column with unique values for this collection.
+There are no different rows with the same recordDate.
+This collection contains information about the temperature on a certain day.
+
+
+#### Question 
+
+1. Write a solution to find all dates' id with higher temperatures compared to its previous dates (yesterday).
+
+2. Return the result collection in any order
+
+The result format is in the following example.
+
+**Input:** 
+
+Collection: Weather
+
+| id | recordDate | temperature |
+|----|------------|-------------|
+| 1  | 2015-01-01 | 10          |
+| 2  | 2015-01-02 | 25          |
+| 3  | 2015-01-03 | 20          |
+| 4  | 2015-01-04 | 30          |
+
+
+**Output:** 
+
+| id |
+|----|
+| 2  |
+| 4  |
+
+**Explanation:** 
+
+In 2015-01-02, the temperature was higher than the previous day (10 -> 25).
+In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
+
+###  Solution # 9
+
+
+```MongoDB
+db.weather.aggregate([
+  {
+    $setWindowFields: {
+      sortBy: { recordDate: 1 },   // ORDER BY recordDate
+      output: {
+        prevTemp: {
+          $shift: {
+            output: "$temperature",
+            by: -1                 // LAG
+          }
+        }
+      }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      id: 1,
+      temperature_diff: {
+        $subtract: ["$temperature", "$prevTemp"]
+      }
+    }
+  },
+  {
+    $match: {
+      temperature_diff: { $gt: 0 }
+    }
+  }
+])
+
+```
+
+![mongo_9.png](../assets/mongo_9.png)
+
+### Lesson Learnt
+
+1. While inserting data in date format, we need to use ISODate("Date value")
+2. $setWindowFields ⇒ This will look at the other values in the same field for comparison
+3. $shift ⇒ This will tell you whether you need to look the previous value or next value of the same field

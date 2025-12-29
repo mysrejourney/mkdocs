@@ -825,3 +825,111 @@ if __name__ == '__main__':
 4. sorted (list, reverse=True)⇒ Sorts the array in descending order
 
 
+
+ 
+### Exercise # 8: Nested List
+
+Given the names and grades for each student in a class of N students,
+store them in a nested list and print the name(s)
+of any student(s) having the second-lowest grade.
+
+Note:If there are multiple students with the second-lowest grade,order their names alphabetically,
+and print each name on a new line.
+
+**Example**
+
+records = [["Chi",20.0],["Beta",50.0],["Alpha",50.0]]
+The ordered list of scores is [20.0, 50.0], so the second-lowest score is 50.0. 
+There are two students with that score: ["beta", "alpha"]. 
+Ordered alphabetically, the names are printed as:
+
+```Python
+alpha
+beta
+```
+
+**Input Format**
+
+The first line contains an integer, N, the number of students.
+The 2N subsequent lines describe each student over 2 lines.
+- The first line contains a student's name.
+- The second line contains their grade.
+
+**Constraints**
+
+2 <= N <= 5
+
+There will always be one or more students having the second-lowest grade.
+
+**Output Format**
+
+Print the name(s) of any student(s) having the second-lowest grade in. 
+If there are multiple students, order their names alphabetically and print each one on a new line.
+
+**Sample Input**
+
+```Python
+5
+Harry
+37.21
+Berry
+37.21
+Tina
+37.2
+Akriti
+41
+Harsh
+39
+```
+**Sample Output**
+
+```Python
+Berry
+Harry
+```
+
+### Solution  # 7
+
+```Python
+#######################################################################################################################################
+# LOGIC: 
+# 1. Get the input numbers how many records and get the records of name and score
+# 2. Create a nested list with those records => [[name, score], [name, score]]
+# 3. Sort the list based on the score
+# 4. Loop through from last number to first number of the list.
+# 5. Compare first two scores and if it is not equal, then second last number is the second last score. Else, continue the loop
+#
+#######################################################################################################################################
+        
+#######################
+# Program starts here
+#######################
+
+if __name__ == '__main__':
+    records = []
+    for _ in range(int(input())):
+        name = input()
+        score = float(input())
+        records.append([name, score])
+
+    # print(records)
+
+    sorted_records = sorted(set([score for name, score in records])) # Set is used to remove the duplicate values if exists
+    print(sorted_records[1]) # Print the second low score
+
+
+    for name, score in records[::-1]: # Loop through records in the reverse order to find the name of second low score 
+        if sorted_records[1] == score:
+          print(name)
+
+#######################
+# Program ends here
+#######################
+
+```
+![py_sln_8.png](../assets/py_sln_8.png)
+
+### Lessons Learnt
+
+1. set function is used to remove the duplicate values if it exists
+2. for name, score in records[::-1] ⇒ You can reverse the list this way in for loop
